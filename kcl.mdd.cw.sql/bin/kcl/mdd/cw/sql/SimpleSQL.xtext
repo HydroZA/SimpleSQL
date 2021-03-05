@@ -3,10 +3,11 @@ grammar kcl.mdd.cw.sql.SimpleSQL with org.eclipse.xtext.common.Terminals
 generate simpleSQL "http://www.mdd.kcl/cw/sql/SimpleSQL"
 
 Model:
-	statements+=Statement*;
+	statements+=Statement*
+;
 	
 Statement:
-	SELECT | CREATE_DB
+	SELECT | CREATE_DB | CREATE_TABLE
 ;
 
 SELECT:
@@ -14,5 +15,9 @@ SELECT:
 ;
 
 CREATE_DB:
-	'create' 'new' 'database' name=ID 
+	'create' 'new' 'database' dbName=ID
+;
+
+CREATE_TABLE:
+	'create' 'new' 'table' blName=ID 'in' dbName=ID
 ;
