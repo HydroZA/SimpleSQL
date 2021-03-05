@@ -1,0 +1,9 @@
+grammar kcl.mdd.cw.sql.SimpleSQL with org.eclipse.xtext.common.Terminals
+
+generate simpleSQL "http://www.mdd.kcl/cw/sql/SimpleSQL"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
