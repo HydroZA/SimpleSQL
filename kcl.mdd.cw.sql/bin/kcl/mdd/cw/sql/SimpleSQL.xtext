@@ -3,7 +3,16 @@ grammar kcl.mdd.cw.sql.SimpleSQL with org.eclipse.xtext.common.Terminals
 generate simpleSQL "http://www.mdd.kcl/cw/sql/SimpleSQL"
 
 Model:
-	greetings+=Greeting*;
+	statements+=Statement*;
 	
-Greeting:
-	'Hello' name=ID '!';
+Statement:
+	SELECT | CREATE_DB
+;
+
+SELECT:
+	'show' (colName=ID|'all') 'in' table=ID
+;
+
+CREATE_DB:
+	'create' 'new' 'database' name=ID 
+;
