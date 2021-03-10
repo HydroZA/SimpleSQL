@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.mdd.kcl/cw/sql/SimpleSQL"
+			class = "kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage"
+			genModel = "model/generated/SimpleSQL.genmodel" />
+	</extension>
+</plugin>
