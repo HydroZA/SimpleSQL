@@ -7,7 +7,7 @@ Model:
 ;
 	
 Statement:
-	SELECT | CREATE_DB | CREATE_TABLE
+	SELECT | CREATE_DB | CREATE_TABLE 
 ;
 
 SELECT:
@@ -19,5 +19,11 @@ CREATE_DB:
 ;
 
 CREATE_TABLE:
-	'create' 'new' 'table' blName=ID 'in' dbName=ID
+	'create' 'new' 'table' tblName=ID 'in' dbName=ID 'with' 'columns' '(' columns+=COLUMN_DEF ')'
 ;
+
+COLUMN_DEF:
+	name=ID 'with' 'type' type=TYPE
+;
+
+enum TYPE: string | int | double | date;
