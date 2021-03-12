@@ -33,40 +33,46 @@ class SimpleSQLGenerator extends AbstractGenerator
 	
 	def String doGenerate(Model m) '''
 		«FOR s : m.statements»
-		«doGenerate(s)»
+			«generate(s)»
 		«ENDFOR»
 	'''
 	
 	
-	dispatch def doGenerate(INSERT ct)
+	dispatch def generate(INSERT ct)
 	{
 		return ""
 	}
 	
-	dispatch def doGenerate(DELETE ct)
+	dispatch def generate(DELETE ct)
 	{
 		return ""
 	}
 	
-	dispatch def doGenerate(UPDATE ct)
-	{
-		return ""
-	}
-	
-	
-	dispatch def doGenerate(SELECT ct)
+	dispatch def generate(UPDATE ct)
 	{
 		return ""
 	}
 	
 	
-	dispatch def doGenerate(CREATE_TABLE ct)
+	dispatch def generate(SELECT ct)
 	{
 		return ""
 	}
 	
-	dispatch def doGenerate(CREATE_DB cd)
+	
+	dispatch def generate(CREATE_TABLE ct)
 	{
-		return ""
+		return '''
+		CREATE TABLE «ct.name» (
+		«FOR col : ct.columns SEPARATOR ','»
+			«col.name» «col.type»
+		«ENDFOR»
+		)
+		'''
+	}
+	
+	dispatch def generate(CREATE_DB cd)
+	{
+		return "CREATE DATABASE " + cd.name
 	}	
 }

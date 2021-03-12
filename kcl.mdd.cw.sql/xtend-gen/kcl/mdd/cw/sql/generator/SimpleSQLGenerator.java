@@ -4,6 +4,7 @@
 package kcl.mdd.cw.sql.generator;
 
 import java.util.Arrays;
+import kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_DB;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
 import kcl.mdd.cw.sql.simpleSQL.DELETE;
@@ -11,6 +12,7 @@ import kcl.mdd.cw.sql.simpleSQL.INSERT;
 import kcl.mdd.cw.sql.simpleSQL.Model;
 import kcl.mdd.cw.sql.simpleSQL.SELECT;
 import kcl.mdd.cw.sql.simpleSQL.Statement;
+import kcl.mdd.cw.sql.simpleSQL.TYPE;
 import kcl.mdd.cw.sql.simpleSQL.UPDATE;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -45,51 +47,77 @@ public class SimpleSQLGenerator extends AbstractGenerator {
     {
       EList<Statement> _statements = m.getStatements();
       for(final Statement s : _statements) {
-        String _doGenerate = this.doGenerate(s);
-        _builder.append(_doGenerate);
+        String _generate = this.generate(s);
+        _builder.append(_generate);
         _builder.newLineIfNotEmpty();
       }
     }
     return _builder.toString();
   }
   
-  protected String _doGenerate(final INSERT ct) {
+  protected String _generate(final INSERT ct) {
     return "";
   }
   
-  protected String _doGenerate(final DELETE ct) {
+  protected String _generate(final DELETE ct) {
     return "";
   }
   
-  protected String _doGenerate(final UPDATE ct) {
+  protected String _generate(final UPDATE ct) {
     return "";
   }
   
-  protected String _doGenerate(final SELECT ct) {
+  protected String _generate(final SELECT ct) {
     return "";
   }
   
-  protected String _doGenerate(final CREATE_TABLE ct) {
-    return "";
+  protected String _generate(final CREATE_TABLE ct) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("CREATE TABLE ");
+    String _name = ct.getName();
+    _builder.append(_name);
+    _builder.append(" (");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<COLUMN_DEF> _columns = ct.getColumns();
+      boolean _hasElements = false;
+      for(final COLUMN_DEF col : _columns) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(",", "");
+        }
+        String _name_1 = col.getName();
+        _builder.append(_name_1);
+        _builder.append(" ");
+        TYPE _type = col.getType();
+        _builder.append(_type);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append(")");
+    _builder.newLine();
+    return _builder.toString();
   }
   
-  protected String _doGenerate(final CREATE_DB cd) {
-    return "";
+  protected String _generate(final CREATE_DB cd) {
+    String _name = cd.getName();
+    return ("CREATE DATABASE " + _name);
   }
   
-  public String doGenerate(final Statement cd) {
+  public String generate(final Statement cd) {
     if (cd instanceof CREATE_DB) {
-      return _doGenerate((CREATE_DB)cd);
+      return _generate((CREATE_DB)cd);
     } else if (cd instanceof CREATE_TABLE) {
-      return _doGenerate((CREATE_TABLE)cd);
+      return _generate((CREATE_TABLE)cd);
     } else if (cd instanceof DELETE) {
-      return _doGenerate((DELETE)cd);
+      return _generate((DELETE)cd);
     } else if (cd instanceof INSERT) {
-      return _doGenerate((INSERT)cd);
+      return _generate((INSERT)cd);
     } else if (cd instanceof SELECT) {
-      return _doGenerate((SELECT)cd);
+      return _generate((SELECT)cd);
     } else if (cd instanceof UPDATE) {
-      return _doGenerate((UPDATE)cd);
+      return _generate((UPDATE)cd);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(cd).toString());
