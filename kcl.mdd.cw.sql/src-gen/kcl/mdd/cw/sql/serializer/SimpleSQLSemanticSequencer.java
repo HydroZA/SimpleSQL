@@ -10,12 +10,15 @@ import kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_DB;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
 import kcl.mdd.cw.sql.simpleSQL.DELETE;
+import kcl.mdd.cw.sql.simpleSQL.INNERJOIN;
 import kcl.mdd.cw.sql.simpleSQL.INSERT;
 import kcl.mdd.cw.sql.simpleSQL.Insert_List;
 import kcl.mdd.cw.sql.simpleSQL.Model;
+import kcl.mdd.cw.sql.simpleSQL.ORDERBY;
 import kcl.mdd.cw.sql.simpleSQL.SELECT;
 import kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage;
 import kcl.mdd.cw.sql.simpleSQL.UPDATE;
+import kcl.mdd.cw.sql.simpleSQL.WHERE;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
@@ -52,6 +55,9 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 			case SimpleSQLPackage.DELETE:
 				sequence_DELETE(context, (DELETE) semanticObject); 
 				return; 
+			case SimpleSQLPackage.INNERJOIN:
+				sequence_INNERJOIN(context, (INNERJOIN) semanticObject); 
+				return; 
 			case SimpleSQLPackage.INSERT:
 				sequence_INSERT(context, (INSERT) semanticObject); 
 				return; 
@@ -61,11 +67,17 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 			case SimpleSQLPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
+			case SimpleSQLPackage.ORDERBY:
+				sequence_ORDERBY(context, (ORDERBY) semanticObject); 
+				return; 
 			case SimpleSQLPackage.SELECT:
 				sequence_SELECT(context, (SELECT) semanticObject); 
 				return; 
 			case SimpleSQLPackage.UPDATE:
 				sequence_UPDATE(context, (UPDATE) semanticObject); 
+				return; 
+			case SimpleSQLPackage.WHERE:
+				sequence_WHERE(context, (WHERE) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -140,6 +152,25 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     Statement returns INNERJOIN
+	 *     INNERJOIN returns INNERJOIN
+	 *
+	 * Constraint:
+	 *     table=[CREATE_TABLE|ID]
+	 */
+	protected void sequence_INNERJOIN(ISerializationContext context, INNERJOIN semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SimpleSQLPackage.Literals.INNERJOIN__TABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SimpleSQLPackage.Literals.INNERJOIN__TABLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getINNERJOINAccess().getTableCREATE_TABLEIDTerminalRuleCall_2_0_1(), semanticObject.eGet(SimpleSQLPackage.Literals.INNERJOIN__TABLE, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Statement returns INSERT
 	 *     INSERT returns INSERT
 	 *
@@ -183,6 +214,28 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	
 	/**
 	 * Contexts:
+	 *     Statement returns ORDERBY
+	 *     ORDERBY returns ORDERBY
+	 *
+	 * Constraint:
+	 *     (table=[CREATE_TABLE|ID] col=[COLUMN_DEF|ID])
+	 */
+	protected void sequence_ORDERBY(ISerializationContext context, ORDERBY semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SimpleSQLPackage.Literals.ORDERBY__TABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SimpleSQLPackage.Literals.ORDERBY__TABLE));
+			if (transientValues.isValueTransient(semanticObject, SimpleSQLPackage.Literals.ORDERBY__COL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SimpleSQLPackage.Literals.ORDERBY__COL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getORDERBYAccess().getTableCREATE_TABLEIDTerminalRuleCall_2_0_1(), semanticObject.eGet(SimpleSQLPackage.Literals.ORDERBY__TABLE, false));
+		feeder.accept(grammarAccess.getORDERBYAccess().getColCOLUMN_DEFIDTerminalRuleCall_4_0_1(), semanticObject.eGet(SimpleSQLPackage.Literals.ORDERBY__COL, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Statement returns SELECT
 	 *     SELECT returns SELECT
 	 *
@@ -203,6 +256,19 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     (table=[CREATE_TABLE|ID] data+=Insert_List+)
 	 */
 	protected void sequence_UPDATE(ISerializationContext context, UPDATE semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns WHERE
+	 *     WHERE returns WHERE
+	 *
+	 * Constraint:
+	 *     (name=ID db=[CREATE_DB|ID] columns+=COLUMN_DEF+)
+	 */
+	protected void sequence_WHERE(ISerializationContext context, WHERE semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

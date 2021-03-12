@@ -44,6 +44,27 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass orderbyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass whereEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass innerjoinEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass selectEClass = null;
 
   /**
@@ -196,6 +217,105 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
   public EClass getStatement()
   {
     return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getORDERBY()
+  {
+    return orderbyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getORDERBY_Table()
+  {
+    return (EReference)orderbyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getORDERBY_Col()
+  {
+    return (EReference)orderbyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getWHERE()
+  {
+    return whereEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getWHERE_Name()
+  {
+    return (EAttribute)whereEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWHERE_Db()
+  {
+    return (EReference)whereEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWHERE_Columns()
+  {
+    return (EReference)whereEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getINNERJOIN()
+  {
+    return innerjoinEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getINNERJOIN_Table()
+  {
+    return (EReference)innerjoinEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -498,6 +618,18 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
 
     statementEClass = createEClass(STATEMENT);
 
+    orderbyEClass = createEClass(ORDERBY);
+    createEReference(orderbyEClass, ORDERBY__TABLE);
+    createEReference(orderbyEClass, ORDERBY__COL);
+
+    whereEClass = createEClass(WHERE);
+    createEAttribute(whereEClass, WHERE__NAME);
+    createEReference(whereEClass, WHERE__DB);
+    createEReference(whereEClass, WHERE__COLUMNS);
+
+    innerjoinEClass = createEClass(INNERJOIN);
+    createEReference(innerjoinEClass, INNERJOIN__TABLE);
+
     selectEClass = createEClass(SELECT);
     createEAttribute(selectEClass, SELECT__NAME);
     createEAttribute(selectEClass, SELECT__TABLE);
@@ -562,6 +694,9 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    orderbyEClass.getESuperTypes().add(this.getStatement());
+    whereEClass.getESuperTypes().add(this.getStatement());
+    innerjoinEClass.getESuperTypes().add(this.getStatement());
     selectEClass.getESuperTypes().add(this.getStatement());
     updateEClass.getESuperTypes().add(this.getStatement());
     deleteEClass.getESuperTypes().add(this.getStatement());
@@ -574,6 +709,18 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
     initEReference(getModel_Statements(), this.getStatement(), null, "statements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(orderbyEClass, kcl.mdd.cw.sql.simpleSQL.ORDERBY.class, "ORDERBY", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getORDERBY_Table(), this.getCREATE_TABLE(), null, "table", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.ORDERBY.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getORDERBY_Col(), this.getCOLUMN_DEF(), null, "col", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.ORDERBY.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(whereEClass, kcl.mdd.cw.sql.simpleSQL.WHERE.class, "WHERE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWHERE_Name(), ecorePackage.getEString(), "name", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.WHERE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWHERE_Db(), this.getCREATE_DB(), null, "db", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.WHERE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWHERE_Columns(), this.getCOLUMN_DEF(), null, "columns", null, 0, -1, kcl.mdd.cw.sql.simpleSQL.WHERE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(innerjoinEClass, kcl.mdd.cw.sql.simpleSQL.INNERJOIN.class, "INNERJOIN", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getINNERJOIN_Table(), this.getCREATE_TABLE(), null, "table", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.INNERJOIN.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectEClass, kcl.mdd.cw.sql.simpleSQL.SELECT.class, "SELECT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSELECT_Name(), ecorePackage.getEString(), "name", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.SELECT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

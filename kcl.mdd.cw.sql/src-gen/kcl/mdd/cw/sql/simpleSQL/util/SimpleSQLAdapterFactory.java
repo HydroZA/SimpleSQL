@@ -86,6 +86,21 @@ public class SimpleSQLAdapterFactory extends AdapterFactoryImpl
         return createStatementAdapter();
       }
       @Override
+      public Adapter caseORDERBY(ORDERBY object)
+      {
+        return createORDERBYAdapter();
+      }
+      @Override
+      public Adapter caseWHERE(WHERE object)
+      {
+        return createWHEREAdapter();
+      }
+      @Override
+      public Adapter caseINNERJOIN(INNERJOIN object)
+      {
+        return createINNERJOINAdapter();
+      }
+      @Override
       public Adapter caseSELECT(SELECT object)
       {
         return createSELECTAdapter();
@@ -173,6 +188,51 @@ public class SimpleSQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kcl.mdd.cw.sql.simpleSQL.ORDERBY <em>ORDERBY</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kcl.mdd.cw.sql.simpleSQL.ORDERBY
+   * @generated
+   */
+  public Adapter createORDERBYAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kcl.mdd.cw.sql.simpleSQL.WHERE <em>WHERE</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kcl.mdd.cw.sql.simpleSQL.WHERE
+   * @generated
+   */
+  public Adapter createWHEREAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kcl.mdd.cw.sql.simpleSQL.INNERJOIN <em>INNERJOIN</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kcl.mdd.cw.sql.simpleSQL.INNERJOIN
+   * @generated
+   */
+  public Adapter createINNERJOINAdapter()
   {
     return null;
   }

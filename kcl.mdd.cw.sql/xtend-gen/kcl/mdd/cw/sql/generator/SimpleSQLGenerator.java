@@ -51,6 +51,8 @@ public class SimpleSQLGenerator extends AbstractGenerator {
         String _generate = this.generate(s);
         _builder.append(_generate);
         _builder.newLineIfNotEmpty();
+        _builder.append("\\n");
+        _builder.newLine();
       }
     }
     return _builder.toString();
@@ -65,7 +67,10 @@ public class SimpleSQLGenerator extends AbstractGenerator {
   }
   
   protected String _generate(final UPDATE ct) {
-    return "";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t\t\t");
+    _builder.newLine();
+    return _builder.toString();
   }
   
   protected String _generate(final SELECT ct) {
@@ -107,8 +112,15 @@ public class SimpleSQLGenerator extends AbstractGenerator {
         String _name_1 = col.getName();
         _builder.append(_name_1);
         _builder.append(" ");
+        Object _xifexpression = null;
         TYPE _type = col.getType();
-        _builder.append(_type);
+        boolean _equals = Objects.equal(_type, "string");
+        if (_equals) {
+          _xifexpression = "VARCHAR(255)";
+        } else {
+          _xifexpression = col.getType();
+        }
+        _builder.append(_xifexpression);
         _builder.newLineIfNotEmpty();
       }
     }

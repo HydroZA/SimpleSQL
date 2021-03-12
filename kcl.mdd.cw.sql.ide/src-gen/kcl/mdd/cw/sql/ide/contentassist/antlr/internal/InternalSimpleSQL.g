@@ -99,6 +99,81 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleORDERBY
+entryRuleORDERBY
+:
+{ before(grammarAccess.getORDERBYRule()); }
+	 ruleORDERBY
+{ after(grammarAccess.getORDERBYRule()); } 
+	 EOF 
+;
+
+// Rule ORDERBY
+ruleORDERBY 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getORDERBYAccess().getGroup()); }
+		(rule__ORDERBY__Group__0)
+		{ after(grammarAccess.getORDERBYAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleWHERE
+entryRuleWHERE
+:
+{ before(grammarAccess.getWHERERule()); }
+	 ruleWHERE
+{ after(grammarAccess.getWHERERule()); } 
+	 EOF 
+;
+
+// Rule WHERE
+ruleWHERE 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getWHEREAccess().getGroup()); }
+		(rule__WHERE__Group__0)
+		{ after(grammarAccess.getWHEREAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleINNERJOIN
+entryRuleINNERJOIN
+:
+{ before(grammarAccess.getINNERJOINRule()); }
+	 ruleINNERJOIN
+{ after(grammarAccess.getINNERJOINRule()); } 
+	 EOF 
+;
+
+// Rule INNERJOIN
+ruleINNERJOIN 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getINNERJOINAccess().getGroup()); }
+		(rule__INNERJOIN__Group__0)
+		{ after(grammarAccess.getINNERJOINAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleSELECT
 entryRuleSELECT
 :
@@ -355,6 +430,24 @@ rule__Statement__Alternatives
 		ruleUPDATE
 		{ after(grammarAccess.getStatementAccess().getUPDATEParserRuleCall_5()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getStatementAccess().getINNERJOINParserRuleCall_6()); }
+		ruleINNERJOIN
+		{ after(grammarAccess.getStatementAccess().getINNERJOINParserRuleCall_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getStatementAccess().getWHEREParserRuleCall_7()); }
+		ruleWHERE
+		{ after(grammarAccess.getStatementAccess().getWHEREParserRuleCall_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getStatementAccess().getORDERBYParserRuleCall_8()); }
+		ruleORDERBY
+		{ after(grammarAccess.getStatementAccess().getORDERBYParserRuleCall_8()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -434,6 +527,553 @@ rule__TYPE__Alternatives
 finally {
 	restoreStackSize(stackSize);
 }
+
+rule__ORDERBY__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ORDERBY__Group__0__Impl
+	rule__ORDERBY__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getORDERBYAccess().getOrderKeyword_0()); }
+	'order'
+	{ after(grammarAccess.getORDERBYAccess().getOrderKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ORDERBY__Group__1__Impl
+	rule__ORDERBY__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getORDERBYAccess().getByKeyword_1()); }
+	'by'
+	{ after(grammarAccess.getORDERBYAccess().getByKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ORDERBY__Group__2__Impl
+	rule__ORDERBY__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getORDERBYAccess().getTableAssignment_2()); }
+	(rule__ORDERBY__TableAssignment_2)
+	{ after(grammarAccess.getORDERBYAccess().getTableAssignment_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ORDERBY__Group__3__Impl
+	rule__ORDERBY__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getORDERBYAccess().getWhereKeyword_3()); }
+	'where'
+	{ after(grammarAccess.getORDERBYAccess().getWhereKeyword_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ORDERBY__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getORDERBYAccess().getColAssignment_4()); }
+	(rule__ORDERBY__ColAssignment_4)
+	{ after(grammarAccess.getORDERBYAccess().getColAssignment_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__WHERE__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__0__Impl
+	rule__WHERE__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getWhereKeyword_0()); }
+	'where'
+	{ after(grammarAccess.getWHEREAccess().getWhereKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__1__Impl
+	rule__WHERE__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getToKeyword_1()); }
+	'to'
+	{ after(grammarAccess.getWHEREAccess().getToKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__2__Impl
+	rule__WHERE__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getTableKeyword_2()); }
+	'table'
+	{ after(grammarAccess.getWHEREAccess().getTableKeyword_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__3__Impl
+	rule__WHERE__Group__4
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getNameAssignment_3()); }
+	(rule__WHERE__NameAssignment_3)
+	{ after(grammarAccess.getWHEREAccess().getNameAssignment_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__4__Impl
+	rule__WHERE__Group__5
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getInKeyword_4()); }
+	'in'
+	{ after(grammarAccess.getWHEREAccess().getInKeyword_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__5__Impl
+	rule__WHERE__Group__6
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getDbAssignment_5()); }
+	(rule__WHERE__DbAssignment_5)
+	{ after(grammarAccess.getWHEREAccess().getDbAssignment_5()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__6__Impl
+	rule__WHERE__Group__7
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__6__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getWhereKeyword_6()); }
+	'where'
+	{ after(grammarAccess.getWHEREAccess().getWhereKeyword_6()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__7__Impl
+	rule__WHERE__Group__8
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__7__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getColumnsKeyword_7()); }
+	'columns'
+	{ after(grammarAccess.getWHEREAccess().getColumnsKeyword_7()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__8
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__8__Impl
+	rule__WHERE__Group__9
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__8__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getLeftParenthesisKeyword_8()); }
+	'('
+	{ after(grammarAccess.getWHEREAccess().getLeftParenthesisKeyword_8()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__9
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__9__Impl
+	rule__WHERE__Group__10
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__9__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	(
+		{ before(grammarAccess.getWHEREAccess().getColumnsAssignment_9()); }
+		(rule__WHERE__ColumnsAssignment_9)
+		{ after(grammarAccess.getWHEREAccess().getColumnsAssignment_9()); }
+	)
+	(
+		{ before(grammarAccess.getWHEREAccess().getColumnsAssignment_9()); }
+		(rule__WHERE__ColumnsAssignment_9)*
+		{ after(grammarAccess.getWHEREAccess().getColumnsAssignment_9()); }
+	)
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__10
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__WHERE__Group__10__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__Group__10__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getWHEREAccess().getRightParenthesisKeyword_10()); }
+	')'
+	{ after(grammarAccess.getWHEREAccess().getRightParenthesisKeyword_10()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__INNERJOIN__Group__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__INNERJOIN__Group__0__Impl
+	rule__INNERJOIN__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getINNERJOINAccess().getInnerKeyword_0()); }
+	'inner'
+	{ after(grammarAccess.getINNERJOINAccess().getInnerKeyword_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__INNERJOIN__Group__1__Impl
+	rule__INNERJOIN__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getINNERJOINAccess().getJoinKeyword_1()); }
+	'join'
+	{ after(grammarAccess.getINNERJOINAccess().getJoinKeyword_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__INNERJOIN__Group__2__Impl
+	rule__INNERJOIN__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getINNERJOINAccess().getTableAssignment_2()); }
+	(rule__INNERJOIN__TableAssignment_2)
+	{ after(grammarAccess.getINNERJOINAccess().getTableAssignment_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__INNERJOIN__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getINNERJOINAccess().getOnKeyword_3()); }
+	'on'
+	{ after(grammarAccess.getINNERJOINAccess().getOnKeyword_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 
 rule__SELECT__Group__0
 	@init {
@@ -562,7 +1202,7 @@ rule__UPDATE__Group__0__Impl
 :
 (
 	{ before(grammarAccess.getUPDATEAccess().getUpdateKeyword_0()); }
-	'Update'
+	'update'
 	{ after(grammarAccess.getUPDATEAccess().getUpdateKeyword_0()); }
 )
 ;
@@ -1930,6 +2570,112 @@ rule__Model__StatementsAssignment
 		{ before(grammarAccess.getModelAccess().getStatementsStatementParserRuleCall_0()); }
 		ruleStatement
 		{ after(grammarAccess.getModelAccess().getStatementsStatementParserRuleCall_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__TableAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getORDERBYAccess().getTableCREATE_TABLECrossReference_2_0()); }
+		(
+			{ before(grammarAccess.getORDERBYAccess().getTableCREATE_TABLEIDTerminalRuleCall_2_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getORDERBYAccess().getTableCREATE_TABLEIDTerminalRuleCall_2_0_1()); }
+		)
+		{ after(grammarAccess.getORDERBYAccess().getTableCREATE_TABLECrossReference_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ORDERBY__ColAssignment_4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getORDERBYAccess().getColCOLUMN_DEFCrossReference_4_0()); }
+		(
+			{ before(grammarAccess.getORDERBYAccess().getColCOLUMN_DEFIDTerminalRuleCall_4_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getORDERBYAccess().getColCOLUMN_DEFIDTerminalRuleCall_4_0_1()); }
+		)
+		{ after(grammarAccess.getORDERBYAccess().getColCOLUMN_DEFCrossReference_4_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__NameAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getWHEREAccess().getNameIDTerminalRuleCall_3_0()); }
+		RULE_ID
+		{ after(grammarAccess.getWHEREAccess().getNameIDTerminalRuleCall_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__DbAssignment_5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getWHEREAccess().getDbCREATE_DBCrossReference_5_0()); }
+		(
+			{ before(grammarAccess.getWHEREAccess().getDbCREATE_DBIDTerminalRuleCall_5_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getWHEREAccess().getDbCREATE_DBIDTerminalRuleCall_5_0_1()); }
+		)
+		{ after(grammarAccess.getWHEREAccess().getDbCREATE_DBCrossReference_5_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__WHERE__ColumnsAssignment_9
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getWHEREAccess().getColumnsCOLUMN_DEFParserRuleCall_9_0()); }
+		ruleCOLUMN_DEF
+		{ after(grammarAccess.getWHEREAccess().getColumnsCOLUMN_DEFParserRuleCall_9_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__INNERJOIN__TableAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getINNERJOINAccess().getTableCREATE_TABLECrossReference_2_0()); }
+		(
+			{ before(grammarAccess.getINNERJOINAccess().getTableCREATE_TABLEIDTerminalRuleCall_2_0_1()); }
+			RULE_ID
+			{ after(grammarAccess.getINNERJOINAccess().getTableCREATE_TABLEIDTerminalRuleCall_2_0_1()); }
+		)
+		{ after(grammarAccess.getINNERJOINAccess().getTableCREATE_TABLECrossReference_2_0()); }
 	)
 ;
 finally {

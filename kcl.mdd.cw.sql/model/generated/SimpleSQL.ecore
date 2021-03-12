@@ -6,6 +6,19 @@
         eType="#//Statement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ORDERBY" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CREATE_TABLE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="col" eType="#//COLUMN_DEF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WHERE" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="db" eType="#//CREATE_DB"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
+        eType="#//COLUMN_DEF" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="INNERJOIN" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CREATE_TABLE"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SELECT" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="table" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

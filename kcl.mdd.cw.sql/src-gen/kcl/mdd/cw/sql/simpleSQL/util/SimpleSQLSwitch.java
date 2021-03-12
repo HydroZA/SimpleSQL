@@ -87,6 +87,30 @@ public class SimpleSQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SimpleSQLPackage.ORDERBY:
+      {
+        ORDERBY orderby = (ORDERBY)theEObject;
+        T result = caseORDERBY(orderby);
+        if (result == null) result = caseStatement(orderby);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SimpleSQLPackage.WHERE:
+      {
+        WHERE where = (WHERE)theEObject;
+        T result = caseWHERE(where);
+        if (result == null) result = caseStatement(where);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SimpleSQLPackage.INNERJOIN:
+      {
+        INNERJOIN innerjoin = (INNERJOIN)theEObject;
+        T result = caseINNERJOIN(innerjoin);
+        if (result == null) result = caseStatement(innerjoin);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SimpleSQLPackage.SELECT:
       {
         SELECT select = (SELECT)theEObject;
@@ -181,6 +205,54 @@ public class SimpleSQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStatement(Statement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>ORDERBY</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>ORDERBY</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseORDERBY(ORDERBY object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>WHERE</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>WHERE</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWHERE(WHERE object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>INNERJOIN</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>INNERJOIN</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseINNERJOIN(INNERJOIN object)
   {
     return null;
   }

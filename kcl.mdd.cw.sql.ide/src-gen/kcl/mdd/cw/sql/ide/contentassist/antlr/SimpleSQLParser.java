@@ -35,6 +35,9 @@ public class SimpleSQLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSELECTAccess().getAlternatives_1(), "rule__SELECT__Alternatives_1");
 			builder.put(grammarAccess.getInsert_ListAccess().getAlternatives(), "rule__Insert_List__Alternatives");
 			builder.put(grammarAccess.getTYPEAccess().getAlternatives(), "rule__TYPE__Alternatives");
+			builder.put(grammarAccess.getORDERBYAccess().getGroup(), "rule__ORDERBY__Group__0");
+			builder.put(grammarAccess.getWHEREAccess().getGroup(), "rule__WHERE__Group__0");
+			builder.put(grammarAccess.getINNERJOINAccess().getGroup(), "rule__INNERJOIN__Group__0");
 			builder.put(grammarAccess.getSELECTAccess().getGroup(), "rule__SELECT__Group__0");
 			builder.put(grammarAccess.getUPDATEAccess().getGroup(), "rule__UPDATE__Group__0");
 			builder.put(grammarAccess.getDELETEAccess().getGroup(), "rule__DELETE__Group__0");
@@ -45,6 +48,12 @@ public class SimpleSQLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInsert_ListAccess().getGroup_0(), "rule__Insert_List__Group_0__0");
 			builder.put(grammarAccess.getInsert_ListAccess().getGroup_1(), "rule__Insert_List__Group_1__0");
 			builder.put(grammarAccess.getModelAccess().getStatementsAssignment(), "rule__Model__StatementsAssignment");
+			builder.put(grammarAccess.getORDERBYAccess().getTableAssignment_2(), "rule__ORDERBY__TableAssignment_2");
+			builder.put(grammarAccess.getORDERBYAccess().getColAssignment_4(), "rule__ORDERBY__ColAssignment_4");
+			builder.put(grammarAccess.getWHEREAccess().getNameAssignment_3(), "rule__WHERE__NameAssignment_3");
+			builder.put(grammarAccess.getWHEREAccess().getDbAssignment_5(), "rule__WHERE__DbAssignment_5");
+			builder.put(grammarAccess.getWHEREAccess().getColumnsAssignment_9(), "rule__WHERE__ColumnsAssignment_9");
+			builder.put(grammarAccess.getINNERJOINAccess().getTableAssignment_2(), "rule__INNERJOIN__TableAssignment_2");
 			builder.put(grammarAccess.getSELECTAccess().getNameAssignment_1_0(), "rule__SELECT__NameAssignment_1_0");
 			builder.put(grammarAccess.getSELECTAccess().getTableAssignment_3(), "rule__SELECT__TableAssignment_3");
 			builder.put(grammarAccess.getUPDATEAccess().getTableAssignment_3(), "rule__UPDATE__TableAssignment_3");

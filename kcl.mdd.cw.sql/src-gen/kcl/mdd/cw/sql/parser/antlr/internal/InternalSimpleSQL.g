@@ -166,6 +166,235 @@ ruleStatement returns [EObject current=null]
 			$current = $this_UPDATE_5.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getINNERJOINParserRuleCall_6());
+		}
+		this_INNERJOIN_6=ruleINNERJOIN
+		{
+			$current = $this_INNERJOIN_6.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getWHEREParserRuleCall_7());
+		}
+		this_WHERE_7=ruleWHERE
+		{
+			$current = $this_WHERE_7.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getORDERBYParserRuleCall_8());
+		}
+		this_ORDERBY_8=ruleORDERBY
+		{
+			$current = $this_ORDERBY_8.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleORDERBY
+entryRuleORDERBY returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getORDERBYRule()); }
+	iv_ruleORDERBY=ruleORDERBY
+	{ $current=$iv_ruleORDERBY.current; }
+	EOF;
+
+// Rule ORDERBY
+ruleORDERBY returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='order'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getORDERBYAccess().getOrderKeyword_0());
+		}
+		otherlv_1='by'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getORDERBYAccess().getByKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getORDERBYRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getORDERBYAccess().getTableCREATE_TABLECrossReference_2_0());
+				}
+			)
+		)
+		otherlv_3='where'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getORDERBYAccess().getWhereKeyword_3());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getORDERBYRule());
+					}
+				}
+				otherlv_4=RULE_ID
+				{
+					newLeafNode(otherlv_4, grammarAccess.getORDERBYAccess().getColCOLUMN_DEFCrossReference_4_0());
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleWHERE
+entryRuleWHERE returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getWHERERule()); }
+	iv_ruleWHERE=ruleWHERE
+	{ $current=$iv_ruleWHERE.current; }
+	EOF;
+
+// Rule WHERE
+ruleWHERE returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='where'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getWHEREAccess().getWhereKeyword_0());
+		}
+		otherlv_1='to'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getWHEREAccess().getToKeyword_1());
+		}
+		otherlv_2='table'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getWHEREAccess().getTableKeyword_2());
+		}
+		(
+			(
+				lv_name_3_0=RULE_ID
+				{
+					newLeafNode(lv_name_3_0, grammarAccess.getWHEREAccess().getNameIDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getWHERERule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_3_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_4='in'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getWHEREAccess().getInKeyword_4());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getWHERERule());
+					}
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getWHEREAccess().getDbCREATE_DBCrossReference_5_0());
+				}
+			)
+		)
+		otherlv_6='where'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getWHEREAccess().getWhereKeyword_6());
+		}
+		otherlv_7='columns'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getWHEREAccess().getColumnsKeyword_7());
+		}
+		otherlv_8='('
+		{
+			newLeafNode(otherlv_8, grammarAccess.getWHEREAccess().getLeftParenthesisKeyword_8());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getWHEREAccess().getColumnsCOLUMN_DEFParserRuleCall_9_0());
+				}
+				lv_columns_9_0=ruleCOLUMN_DEF
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getWHERERule());
+					}
+					add(
+						$current,
+						"columns",
+						lv_columns_9_0,
+						"kcl.mdd.cw.sql.SimpleSQL.COLUMN_DEF");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_10=')'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getWHEREAccess().getRightParenthesisKeyword_10());
+		}
+	)
+;
+
+// Entry rule entryRuleINNERJOIN
+entryRuleINNERJOIN returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getINNERJOINRule()); }
+	iv_ruleINNERJOIN=ruleINNERJOIN
+	{ $current=$iv_ruleINNERJOIN.current; }
+	EOF;
+
+// Rule INNERJOIN
+ruleINNERJOIN returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='inner'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getINNERJOINAccess().getInnerKeyword_0());
+		}
+		otherlv_1='join'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getINNERJOINAccess().getJoinKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getINNERJOINRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getINNERJOINAccess().getTableCREATE_TABLECrossReference_2_0());
+				}
+			)
+		)
+		otherlv_3='on'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getINNERJOINAccess().getOnKeyword_3());
+		}
 	)
 ;
 
@@ -255,7 +484,7 @@ ruleUPDATE returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='Update'
+		otherlv_0='update'
 		{
 			newLeafNode(otherlv_0, grammarAccess.getUPDATEAccess().getUpdateKeyword_0());
 		}

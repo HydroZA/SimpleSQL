@@ -106,6 +106,117 @@ public interface SimpleSQLPackage extends EPackage
   int STATEMENT_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.ORDERBYImpl <em>ORDERBY</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.ORDERBYImpl
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getORDERBY()
+   * @generated
+   */
+  int ORDERBY = 2;
+
+  /**
+   * The feature id for the '<em><b>Table</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDERBY__TABLE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Col</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDERBY__COL = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>ORDERBY</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ORDERBY_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.WHEREImpl <em>WHERE</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.WHEREImpl
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getWHERE()
+   * @generated
+   */
+  int WHERE = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHERE__NAME = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Db</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHERE__DB = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Columns</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHERE__COLUMNS = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>WHERE</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WHERE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.INNERJOINImpl <em>INNERJOIN</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.INNERJOINImpl
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getINNERJOIN()
+   * @generated
+   */
+  int INNERJOIN = 4;
+
+  /**
+   * The feature id for the '<em><b>Table</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INNERJOIN__TABLE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>INNERJOIN</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INNERJOIN_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.SELECTImpl <em>SELECT</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -113,7 +224,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getSELECT()
    * @generated
    */
-  int SELECT = 2;
+  int SELECT = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -150,7 +261,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getUPDATE()
    * @generated
    */
-  int UPDATE = 3;
+  int UPDATE = 6;
 
   /**
    * The feature id for the '<em><b>Table</b></em>' reference.
@@ -187,7 +298,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getDELETE()
    * @generated
    */
-  int DELETE = 4;
+  int DELETE = 7;
 
   /**
    * The feature id for the '<em><b>Table</b></em>' reference.
@@ -224,7 +335,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getCREATE_DB()
    * @generated
    */
-  int CREATE_DB = 5;
+  int CREATE_DB = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -252,7 +363,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getCREATE_TABLE()
    * @generated
    */
-  int CREATE_TABLE = 6;
+  int CREATE_TABLE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -298,7 +409,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getCOLUMN_DEF()
    * @generated
    */
-  int COLUMN_DEF = 7;
+  int COLUMN_DEF = 10;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -335,7 +446,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getINSERT()
    * @generated
    */
-  int INSERT = 8;
+  int INSERT = 11;
 
   /**
    * The feature id for the '<em><b>Table</b></em>' reference.
@@ -372,7 +483,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getInsert_List()
    * @generated
    */
-  int INSERT_LIST = 9;
+  int INSERT_LIST = 12;
 
   /**
    * The feature id for the '<em><b>Data</b></em>' attribute.
@@ -400,7 +511,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getTYPE()
    * @generated
    */
-  int TYPE = 10;
+  int TYPE = 13;
 
 
   /**
@@ -433,6 +544,102 @@ public interface SimpleSQLPackage extends EPackage
    * @generated
    */
   EClass getStatement();
+
+  /**
+   * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.ORDERBY <em>ORDERBY</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>ORDERBY</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.ORDERBY
+   * @generated
+   */
+  EClass getORDERBY();
+
+  /**
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.ORDERBY#getTable <em>Table</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Table</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.ORDERBY#getTable()
+   * @see #getORDERBY()
+   * @generated
+   */
+  EReference getORDERBY_Table();
+
+  /**
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.ORDERBY#getCol <em>Col</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Col</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.ORDERBY#getCol()
+   * @see #getORDERBY()
+   * @generated
+   */
+  EReference getORDERBY_Col();
+
+  /**
+   * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.WHERE <em>WHERE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>WHERE</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.WHERE
+   * @generated
+   */
+  EClass getWHERE();
+
+  /**
+   * Returns the meta object for the attribute '{@link kcl.mdd.cw.sql.simpleSQL.WHERE#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.WHERE#getName()
+   * @see #getWHERE()
+   * @generated
+   */
+  EAttribute getWHERE_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.WHERE#getDb <em>Db</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Db</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.WHERE#getDb()
+   * @see #getWHERE()
+   * @generated
+   */
+  EReference getWHERE_Db();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link kcl.mdd.cw.sql.simpleSQL.WHERE#getColumns <em>Columns</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Columns</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.WHERE#getColumns()
+   * @see #getWHERE()
+   * @generated
+   */
+  EReference getWHERE_Columns();
+
+  /**
+   * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.INNERJOIN <em>INNERJOIN</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>INNERJOIN</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.INNERJOIN
+   * @generated
+   */
+  EClass getINNERJOIN();
+
+  /**
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.INNERJOIN#getTable <em>Table</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Table</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.INNERJOIN#getTable()
+   * @see #getINNERJOIN()
+   * @generated
+   */
+  EReference getINNERJOIN_Table();
 
   /**
    * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.SELECT <em>SELECT</em>}'.
@@ -739,6 +946,84 @@ public interface SimpleSQLPackage extends EPackage
      * @generated
      */
     EClass STATEMENT = eINSTANCE.getStatement();
+
+    /**
+     * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.ORDERBYImpl <em>ORDERBY</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.ORDERBYImpl
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getORDERBY()
+     * @generated
+     */
+    EClass ORDERBY = eINSTANCE.getORDERBY();
+
+    /**
+     * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ORDERBY__TABLE = eINSTANCE.getORDERBY_Table();
+
+    /**
+     * The meta object literal for the '<em><b>Col</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ORDERBY__COL = eINSTANCE.getORDERBY_Col();
+
+    /**
+     * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.WHEREImpl <em>WHERE</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.WHEREImpl
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getWHERE()
+     * @generated
+     */
+    EClass WHERE = eINSTANCE.getWHERE();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WHERE__NAME = eINSTANCE.getWHERE_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Db</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHERE__DB = eINSTANCE.getWHERE_Db();
+
+    /**
+     * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WHERE__COLUMNS = eINSTANCE.getWHERE_Columns();
+
+    /**
+     * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.INNERJOINImpl <em>INNERJOIN</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.INNERJOINImpl
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getINNERJOIN()
+     * @generated
+     */
+    EClass INNERJOIN = eINSTANCE.getINNERJOIN();
+
+    /**
+     * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INNERJOIN__TABLE = eINSTANCE.getINNERJOIN_Table();
 
     /**
      * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.SELECTImpl <em>SELECT</em>}' class.

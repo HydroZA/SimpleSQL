@@ -34,6 +34,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 	def String doGenerate(Model m) '''
 		«FOR s : m.statements»
 			«generate(s)»
+			\n
 		«ENDFOR»
 	'''
 	
@@ -50,15 +51,17 @@ class SimpleSQLGenerator extends AbstractGenerator
 	
 	dispatch def generate(UPDATE ct)
 	{
-		return ""
+		return '''
+			
+		'''
 	}
 	
 	
 	dispatch def generate(SELECT ct)
 	{
 		return '''
-		SELECT «ct.name == 'all' ? '*' : ct.name»
-		FROM «ct.table»
+			SELECT «ct.name == 'all' ? '*' : ct.name»
+			FROM «ct.table»
 		'''
 	}
 	
@@ -68,7 +71,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		return '''
 		CREATE TABLE «ct.name» (
 		«FOR col : ct.columns SEPARATOR ','»
-			«col.name» «col.type»
+			«col.name» «col.type == 'string' ? 'VARCHAR(255)' : col.type»
 		«ENDFOR»
 		)
 		'''

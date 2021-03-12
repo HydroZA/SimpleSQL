@@ -68,6 +68,9 @@ public class SimpleSQLFactoryImpl extends EFactoryImpl implements SimpleSQLFacto
     {
       case SimpleSQLPackage.MODEL: return createModel();
       case SimpleSQLPackage.STATEMENT: return createStatement();
+      case SimpleSQLPackage.ORDERBY: return createORDERBY();
+      case SimpleSQLPackage.WHERE: return createWHERE();
+      case SimpleSQLPackage.INNERJOIN: return createINNERJOIN();
       case SimpleSQLPackage.SELECT: return createSELECT();
       case SimpleSQLPackage.UPDATE: return createUPDATE();
       case SimpleSQLPackage.DELETE: return createDELETE();
@@ -137,6 +140,42 @@ public class SimpleSQLFactoryImpl extends EFactoryImpl implements SimpleSQLFacto
   {
     StatementImpl statement = new StatementImpl();
     return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ORDERBY createORDERBY()
+  {
+    ORDERBYImpl orderby = new ORDERBYImpl();
+    return orderby;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public WHERE createWHERE()
+  {
+    WHEREImpl where = new WHEREImpl();
+    return where;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public INNERJOIN createINNERJOIN()
+  {
+    INNERJOINImpl innerjoin = new INNERJOINImpl();
+    return innerjoin;
   }
 
   /**

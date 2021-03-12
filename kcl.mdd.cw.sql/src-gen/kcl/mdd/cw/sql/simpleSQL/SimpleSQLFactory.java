@@ -42,6 +42,33 @@ public interface SimpleSQLFactory extends EFactory
   Statement createStatement();
 
   /**
+   * Returns a new object of class '<em>ORDERBY</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>ORDERBY</em>'.
+   * @generated
+   */
+  ORDERBY createORDERBY();
+
+  /**
+   * Returns a new object of class '<em>WHERE</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>WHERE</em>'.
+   * @generated
+   */
+  WHERE createWHERE();
+
+  /**
+   * Returns a new object of class '<em>INNERJOIN</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>INNERJOIN</em>'.
+   * @generated
+   */
+  INNERJOIN createINNERJOIN();
+
+  /**
    * Returns a new object of class '<em>SELECT</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
