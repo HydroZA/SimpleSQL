@@ -492,9 +492,9 @@ ruleUPDATE returns [EObject current=null]
 		{
 			newLeafNode(otherlv_1, grammarAccess.getUPDATEAccess().getEntryKeyword_1());
 		}
-		otherlv_2='to'
+		otherlv_2='in'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getUPDATEAccess().getToKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getUPDATEAccess().getInKeyword_2());
 		}
 		(
 			(
@@ -509,13 +509,13 @@ ruleUPDATE returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='with'
+		otherlv_4='on'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getUPDATEAccess().getWithKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getUPDATEAccess().getOnKeyword_4());
 		}
-		otherlv_5='data'
+		otherlv_5='columns'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getUPDATEAccess().getDataKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getUPDATEAccess().getColumnsKeyword_5());
 		}
 		otherlv_6='('
 		{
@@ -524,9 +524,38 @@ ruleUPDATE returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getUPDATEAccess().getDataInsert_ListParserRuleCall_7_0());
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getUPDATERule());
+					}
 				}
-				lv_data_7_0=ruleInsert_List
+				otherlv_7=RULE_ID
+				{
+					newLeafNode(otherlv_7, grammarAccess.getUPDATEAccess().getColsCOLUMN_DEFCrossReference_7_0());
+				}
+			)
+		)+
+		otherlv_8=')'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getUPDATEAccess().getRightParenthesisKeyword_8());
+		}
+		otherlv_9='with'
+		{
+			newLeafNode(otherlv_9, grammarAccess.getUPDATEAccess().getWithKeyword_9());
+		}
+		otherlv_10='data'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getUPDATEAccess().getDataKeyword_10());
+		}
+		otherlv_11='('
+		{
+			newLeafNode(otherlv_11, grammarAccess.getUPDATEAccess().getLeftParenthesisKeyword_11());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getUPDATEAccess().getDataInsert_ListParserRuleCall_12_0());
+				}
+				lv_data_12_0=ruleInsert_List
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getUPDATERule());
@@ -534,15 +563,15 @@ ruleUPDATE returns [EObject current=null]
 					add(
 						$current,
 						"data",
-						lv_data_7_0,
+						lv_data_12_0,
 						"kcl.mdd.cw.sql.SimpleSQL.Insert_List");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_8=')'
+		otherlv_13=')'
 		{
-			newLeafNode(otherlv_8, grammarAccess.getUPDATEAccess().getRightParenthesisKeyword_8());
+			newLeafNode(otherlv_13, grammarAccess.getUPDATEAccess().getRightParenthesisKeyword_13());
 		}
 	)
 ;

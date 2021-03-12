@@ -379,9 +379,20 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
    * @generated
    */
   @Override
-  public EReference getUPDATE_Data()
+  public EReference getUPDATE_Cols()
   {
     return (EReference)updateEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getUPDATE_Data()
+  {
+    return (EReference)updateEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -636,6 +647,7 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
 
     updateEClass = createEClass(UPDATE);
     createEReference(updateEClass, UPDATE__TABLE);
+    createEReference(updateEClass, UPDATE__COLS);
     createEReference(updateEClass, UPDATE__DATA);
 
     deleteEClass = createEClass(DELETE);
@@ -728,6 +740,7 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
 
     initEClass(updateEClass, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, "UPDATE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getUPDATE_Table(), this.getCREATE_TABLE(), null, "table", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUPDATE_Cols(), this.getCOLUMN_DEF(), null, "cols", null, 0, -1, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getUPDATE_Data(), this.getInsert_List(), null, "data", null, 0, -1, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(deleteEClass, kcl.mdd.cw.sql.simpleSQL.DELETE.class, "DELETE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

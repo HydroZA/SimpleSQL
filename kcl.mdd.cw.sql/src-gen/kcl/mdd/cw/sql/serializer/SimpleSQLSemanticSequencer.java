@@ -253,7 +253,7 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     UPDATE returns UPDATE
 	 *
 	 * Constraint:
-	 *     (table=[CREATE_TABLE|ID] data+=Insert_List+)
+	 *     (table=[CREATE_TABLE|ID] cols+=[COLUMN_DEF|ID]+ data+=Insert_List+)
 	 */
 	protected void sequence_UPDATE(ISerializationContext context, UPDATE semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

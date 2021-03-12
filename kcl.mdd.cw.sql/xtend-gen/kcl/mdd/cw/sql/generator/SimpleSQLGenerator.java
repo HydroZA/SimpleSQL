@@ -40,7 +40,7 @@ public class SimpleSQLGenerator extends AbstractGenerator {
   }
   
   public String deriveTargetFileNameFor(final Model model, final Resource resource) {
-    return resource.getURI().appendFileExtension(".sql").lastSegment();
+    return resource.getURI().appendFileExtension("sql").lastSegment();
   }
   
   public String doGenerate(final Model m) {
@@ -68,7 +68,26 @@ public class SimpleSQLGenerator extends AbstractGenerator {
   
   protected String _generate(final UPDATE ct) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\t\t\t");
+    _builder.append("UPDATE ");
+    CREATE_TABLE _table = ct.getTable();
+    _builder.append(_table);
+    _builder.newLineIfNotEmpty();
+    _builder.append("SET ");
+    {
+      EList<COLUMN_DEF> _cols = ct.getCols();
+      boolean _hasElements = false;
+      for(final COLUMN_DEF col : _cols) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(",", "");
+        }
+        _builder.newLineIfNotEmpty();
+        String _name = col.getName();
+        _builder.append(_name);
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.newLine();
     return _builder.toString();
   }

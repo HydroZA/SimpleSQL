@@ -674,10 +674,10 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1019:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalSimpleSQL.g:1019:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalSimpleSQL.g:1048:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalSimpleSQL.g:1048:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalSimpleSQL.g:1019:11: ( '^' )?
+            // InternalSimpleSQL.g:1048:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -686,7 +686,7 @@ public class InternalSimpleSQLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalSimpleSQL.g:1019:11: '^'
+                    // InternalSimpleSQL.g:1048:11: '^'
                     {
                     match('^'); 
 
@@ -704,7 +704,7 @@ public class InternalSimpleSQLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalSimpleSQL.g:1019:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalSimpleSQL.g:1048:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -753,10 +753,10 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1021:10: ( ( '0' .. '9' )+ )
-            // InternalSimpleSQL.g:1021:12: ( '0' .. '9' )+
+            // InternalSimpleSQL.g:1050:10: ( ( '0' .. '9' )+ )
+            // InternalSimpleSQL.g:1050:12: ( '0' .. '9' )+
             {
-            // InternalSimpleSQL.g:1021:12: ( '0' .. '9' )+
+            // InternalSimpleSQL.g:1050:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -770,7 +770,7 @@ public class InternalSimpleSQLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalSimpleSQL.g:1021:13: '0' .. '9'
+            	    // InternalSimpleSQL.g:1050:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -802,10 +802,10 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1023:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalSimpleSQL.g:1023:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalSimpleSQL.g:1052:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalSimpleSQL.g:1052:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalSimpleSQL.g:1023:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalSimpleSQL.g:1052:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -823,10 +823,10 @@ public class InternalSimpleSQLLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalSimpleSQL.g:1023:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalSimpleSQL.g:1052:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalSimpleSQL.g:1023:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalSimpleSQL.g:1052:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -842,7 +842,7 @@ public class InternalSimpleSQLLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalSimpleSQL.g:1023:21: '\\\\' .
+                    	    // InternalSimpleSQL.g:1052:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -850,7 +850,7 @@ public class InternalSimpleSQLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalSimpleSQL.g:1023:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalSimpleSQL.g:1052:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -875,10 +875,10 @@ public class InternalSimpleSQLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalSimpleSQL.g:1023:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalSimpleSQL.g:1052:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalSimpleSQL.g:1023:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalSimpleSQL.g:1052:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -894,7 +894,7 @@ public class InternalSimpleSQLLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalSimpleSQL.g:1023:54: '\\\\' .
+                    	    // InternalSimpleSQL.g:1052:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -902,7 +902,7 @@ public class InternalSimpleSQLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalSimpleSQL.g:1023:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalSimpleSQL.g:1052:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -945,12 +945,12 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1025:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalSimpleSQL.g:1025:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalSimpleSQL.g:1054:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalSimpleSQL.g:1054:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalSimpleSQL.g:1025:24: ( options {greedy=false; } : . )*
+            // InternalSimpleSQL.g:1054:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -975,7 +975,7 @@ public class InternalSimpleSQLLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalSimpleSQL.g:1025:52: .
+            	    // InternalSimpleSQL.g:1054:52: .
             	    {
             	    matchAny(); 
 
@@ -1005,12 +1005,12 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1027:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalSimpleSQL.g:1027:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalSimpleSQL.g:1056:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalSimpleSQL.g:1056:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalSimpleSQL.g:1027:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalSimpleSQL.g:1056:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1023,7 +1023,7 @@ public class InternalSimpleSQLLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalSimpleSQL.g:1027:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalSimpleSQL.g:1056:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1043,7 +1043,7 @@ public class InternalSimpleSQLLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalSimpleSQL.g:1027:40: ( ( '\\r' )? '\\n' )?
+            // InternalSimpleSQL.g:1056:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1052,9 +1052,9 @@ public class InternalSimpleSQLLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalSimpleSQL.g:1027:41: ( '\\r' )? '\\n'
+                    // InternalSimpleSQL.g:1056:41: ( '\\r' )? '\\n'
                     {
-                    // InternalSimpleSQL.g:1027:41: ( '\\r' )?
+                    // InternalSimpleSQL.g:1056:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1063,7 +1063,7 @@ public class InternalSimpleSQLLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalSimpleSQL.g:1027:41: '\\r'
+                            // InternalSimpleSQL.g:1056:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1095,10 +1095,10 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1029:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalSimpleSQL.g:1029:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalSimpleSQL.g:1058:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalSimpleSQL.g:1058:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalSimpleSQL.g:1029:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalSimpleSQL.g:1058:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1152,8 +1152,8 @@ public class InternalSimpleSQLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSimpleSQL.g:1031:16: ( . )
-            // InternalSimpleSQL.g:1031:18: .
+            // InternalSimpleSQL.g:1060:16: ( . )
+            // InternalSimpleSQL.g:1060:18: .
             {
             matchAny(); 
 

@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getTable <em>Table</em>}</li>
+ *   <li>{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getCols <em>Cols</em>}</li>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getData <em>Data</em>}</li>
  * </ul>
  *
@@ -45,6 +46,18 @@ public interface UPDATE extends Statement
    * @generated
    */
   void setTable(CREATE_TABLE value);
+
+  /**
+   * Returns the value of the '<em><b>Cols</b></em>' reference list.
+   * The list contents are of type {@link kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Cols</em>' reference list.
+   * @see kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage#getUPDATE_Cols()
+   * @model
+   * @generated
+   */
+  EList<COLUMN_DEF> getCols();
 
   /**
    * Returns the value of the '<em><b>Data</b></em>' containment reference list.

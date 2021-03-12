@@ -5,6 +5,7 @@ package kcl.mdd.cw.sql.simpleSQL.impl;
 
 import java.util.Collection;
 
+import kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
 import kcl.mdd.cw.sql.simpleSQL.Insert_List;
 import kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage;
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -32,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl#getTable <em>Table</em>}</li>
+ *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl#getCols <em>Cols</em>}</li>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl#getData <em>Data</em>}</li>
  * </ul>
  *
@@ -48,6 +51,16 @@ public class UPDATEImpl extends StatementImpl implements UPDATE
    * @ordered
    */
   protected CREATE_TABLE table;
+
+  /**
+   * The cached value of the '{@link #getCols() <em>Cols</em>}' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCols()
+   * @generated
+   * @ordered
+   */
+  protected EList<COLUMN_DEF> cols;
 
   /**
    * The cached value of the '{@link #getData() <em>Data</em>}' containment reference list.
@@ -131,6 +144,21 @@ public class UPDATEImpl extends StatementImpl implements UPDATE
    * @generated
    */
   @Override
+  public EList<COLUMN_DEF> getCols()
+  {
+    if (cols == null)
+    {
+      cols = new EObjectResolvingEList<COLUMN_DEF>(COLUMN_DEF.class, this, SimpleSQLPackage.UPDATE__COLS);
+    }
+    return cols;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<Insert_List> getData()
   {
     if (data == null)
@@ -169,6 +197,8 @@ public class UPDATEImpl extends StatementImpl implements UPDATE
       case SimpleSQLPackage.UPDATE__TABLE:
         if (resolve) return getTable();
         return basicGetTable();
+      case SimpleSQLPackage.UPDATE__COLS:
+        return getCols();
       case SimpleSQLPackage.UPDATE__DATA:
         return getData();
     }
@@ -188,6 +218,10 @@ public class UPDATEImpl extends StatementImpl implements UPDATE
     {
       case SimpleSQLPackage.UPDATE__TABLE:
         setTable((CREATE_TABLE)newValue);
+        return;
+      case SimpleSQLPackage.UPDATE__COLS:
+        getCols().clear();
+        getCols().addAll((Collection<? extends COLUMN_DEF>)newValue);
         return;
       case SimpleSQLPackage.UPDATE__DATA:
         getData().clear();
@@ -210,6 +244,9 @@ public class UPDATEImpl extends StatementImpl implements UPDATE
       case SimpleSQLPackage.UPDATE__TABLE:
         setTable((CREATE_TABLE)null);
         return;
+      case SimpleSQLPackage.UPDATE__COLS:
+        getCols().clear();
+        return;
       case SimpleSQLPackage.UPDATE__DATA:
         getData().clear();
         return;
@@ -229,6 +266,8 @@ public class UPDATEImpl extends StatementImpl implements UPDATE
     {
       case SimpleSQLPackage.UPDATE__TABLE:
         return table != null;
+      case SimpleSQLPackage.UPDATE__COLS:
+        return cols != null && !cols.isEmpty();
       case SimpleSQLPackage.UPDATE__DATA:
         return data != null && !data.isEmpty();
     }

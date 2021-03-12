@@ -289,22 +289,31 @@ public class SimpleSQLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cUpdateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cEntryKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cToKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cInKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cTableAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cTableCREATE_TABLECrossReference_3_0 = (CrossReference)cTableAssignment_3.eContents().get(0);
 		private final RuleCall cTableCREATE_TABLEIDTerminalRuleCall_3_0_1 = (RuleCall)cTableCREATE_TABLECrossReference_3_0.eContents().get(1);
-		private final Keyword cWithKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cDataKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cOnKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cColumnsKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cDataAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cDataInsert_ListParserRuleCall_7_0 = (RuleCall)cDataAssignment_7.eContents().get(0);
+		private final Assignment cColsAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final CrossReference cColsCOLUMN_DEFCrossReference_7_0 = (CrossReference)cColsAssignment_7.eContents().get(0);
+		private final RuleCall cColsCOLUMN_DEFIDTerminalRuleCall_7_0_1 = (RuleCall)cColsCOLUMN_DEFCrossReference_7_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cWithKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cDataKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cLeftParenthesisKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cDataAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cDataInsert_ListParserRuleCall_12_0 = (RuleCall)cDataAssignment_12.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_13 = (Keyword)cGroup.eContents().get(13);
 		
 		//UPDATE:
-		//	'update' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')';
+		//	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '('
+		//	data+=Insert_List+ ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'update' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')'
+		//'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '('
+		//data+=Insert_List+ ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'update'
@@ -313,8 +322,8 @@ public class SimpleSQLGrammarAccess extends AbstractGrammarElementFinder {
 		//'entry'
 		public Keyword getEntryKeyword_1() { return cEntryKeyword_1; }
 		
-		//'to'
-		public Keyword getToKeyword_2() { return cToKeyword_2; }
+		//'in'
+		public Keyword getInKeyword_2() { return cInKeyword_2; }
 		
 		//table=[CREATE_TABLE]
 		public Assignment getTableAssignment_3() { return cTableAssignment_3; }
@@ -325,23 +334,44 @@ public class SimpleSQLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTableCREATE_TABLEIDTerminalRuleCall_3_0_1() { return cTableCREATE_TABLEIDTerminalRuleCall_3_0_1; }
 		
-		//'with'
-		public Keyword getWithKeyword_4() { return cWithKeyword_4; }
+		//'on'
+		public Keyword getOnKeyword_4() { return cOnKeyword_4; }
 		
-		//'data'
-		public Keyword getDataKeyword_5() { return cDataKeyword_5; }
+		//'columns'
+		public Keyword getColumnsKeyword_5() { return cColumnsKeyword_5; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
 		
-		//data+=Insert_List+
-		public Assignment getDataAssignment_7() { return cDataAssignment_7; }
+		//cols+=[COLUMN_DEF]+
+		public Assignment getColsAssignment_7() { return cColsAssignment_7; }
 		
-		//Insert_List
-		public RuleCall getDataInsert_ListParserRuleCall_7_0() { return cDataInsert_ListParserRuleCall_7_0; }
+		//[COLUMN_DEF]
+		public CrossReference getColsCOLUMN_DEFCrossReference_7_0() { return cColsCOLUMN_DEFCrossReference_7_0; }
+		
+		//ID
+		public RuleCall getColsCOLUMN_DEFIDTerminalRuleCall_7_0_1() { return cColsCOLUMN_DEFIDTerminalRuleCall_7_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
+		
+		//'with'
+		public Keyword getWithKeyword_9() { return cWithKeyword_9; }
+		
+		//'data'
+		public Keyword getDataKeyword_10() { return cDataKeyword_10; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_11() { return cLeftParenthesisKeyword_11; }
+		
+		//data+=Insert_List+
+		public Assignment getDataAssignment_12() { return cDataAssignment_12; }
+		
+		//Insert_List
+		public RuleCall getDataInsert_ListParserRuleCall_12_0() { return cDataInsert_ListParserRuleCall_12_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_13() { return cRightParenthesisKeyword_13; }
 	}
 	public class DELETEElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kcl.mdd.cw.sql.SimpleSQL.DELETE");
@@ -810,7 +840,8 @@ public class SimpleSQLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//UPDATE:
-	//	'update' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')';
+	//	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '('
+	//	data+=Insert_List+ ')';
 	public UPDATEElements getUPDATEAccess() {
 		return pUPDATE;
 	}

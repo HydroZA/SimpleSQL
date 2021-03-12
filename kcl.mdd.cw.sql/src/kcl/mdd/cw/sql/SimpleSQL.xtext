@@ -27,7 +27,7 @@ SELECT:
 ;
 
 UPDATE:
-	'update' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=[COLUMN_DEF]+ ')'
+	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=Insert_List+ ')'
 ;
 
 DELETE:

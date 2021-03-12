@@ -273,13 +273,22 @@ public interface SimpleSQLPackage extends EPackage
   int UPDATE__TABLE = STATEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Cols</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE__COLS = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Data</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int UPDATE__DATA = STATEMENT_FEATURE_COUNT + 1;
+  int UPDATE__DATA = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>UPDATE</em>' class.
@@ -288,7 +297,7 @@ public interface SimpleSQLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int UPDATE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+  int UPDATE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.DELETEImpl <em>DELETE</em>}' class.
@@ -695,6 +704,17 @@ public interface SimpleSQLPackage extends EPackage
   EReference getUPDATE_Table();
 
   /**
+   * Returns the meta object for the reference list '{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getCols <em>Cols</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Cols</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.UPDATE#getCols()
+   * @see #getUPDATE()
+   * @generated
+   */
+  EReference getUPDATE_Cols();
+
+  /**
    * Returns the meta object for the containment reference list '{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getData <em>Data</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1068,6 +1088,14 @@ public interface SimpleSQLPackage extends EPackage
      * @generated
      */
     EReference UPDATE__TABLE = eINSTANCE.getUPDATE_Table();
+
+    /**
+     * The meta object literal for the '<em><b>Cols</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UPDATE__COLS = eINSTANCE.getUPDATE_Cols();
 
     /**
      * The meta object literal for the '<em><b>Data</b></em>' containment reference list feature.

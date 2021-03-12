@@ -28,7 +28,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		
 	def deriveTargetFileNameFor(Model model, Resource resource) 
 	{
-		resource.URI.appendFileExtension('.sql').lastSegment
+		resource.URI.appendFileExtension('sql').lastSegment
 	}
 	
 	def String doGenerate(Model m) '''
@@ -52,6 +52,10 @@ class SimpleSQLGenerator extends AbstractGenerator
 	dispatch def generate(UPDATE ct)
 	{
 		return '''
+			UPDATE «ct.table»
+			SET «FOR col : ct.cols SEPARATOR ','»
+				«col.name»
+				«ENDFOR»
 			
 		'''
 	}
@@ -60,8 +64,8 @@ class SimpleSQLGenerator extends AbstractGenerator
 	dispatch def generate(SELECT ct)
 	{
 		return '''
-			SELECT «ct.name == 'all' ? '*' : ct.name»
-			FROM «ct.table»
+		SELECT «ct.name == 'all' ? '*' : ct.name»
+		FROM «ct.table»
 		'''
 	}
 	

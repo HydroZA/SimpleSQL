@@ -57,7 +57,8 @@ public class SimpleSQLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSELECTAccess().getNameAssignment_1_0(), "rule__SELECT__NameAssignment_1_0");
 			builder.put(grammarAccess.getSELECTAccess().getTableAssignment_3(), "rule__SELECT__TableAssignment_3");
 			builder.put(grammarAccess.getUPDATEAccess().getTableAssignment_3(), "rule__UPDATE__TableAssignment_3");
-			builder.put(grammarAccess.getUPDATEAccess().getDataAssignment_7(), "rule__UPDATE__DataAssignment_7");
+			builder.put(grammarAccess.getUPDATEAccess().getColsAssignment_7(), "rule__UPDATE__ColsAssignment_7");
+			builder.put(grammarAccess.getUPDATEAccess().getDataAssignment_12(), "rule__UPDATE__DataAssignment_12");
 			builder.put(grammarAccess.getDELETEAccess().getTableAssignment_3(), "rule__DELETE__TableAssignment_3");
 			builder.put(grammarAccess.getDELETEAccess().getDataAssignment_7(), "rule__DELETE__DataAssignment_7");
 			builder.put(grammarAccess.getCREATE_DBAccess().getNameAssignment_3(), "rule__CREATE_DB__NameAssignment_3");

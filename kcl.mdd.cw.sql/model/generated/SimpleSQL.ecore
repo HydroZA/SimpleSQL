@@ -25,6 +25,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UPDATE" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//CREATE_TABLE"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cols" unique="false" upperBound="-1"
+        eType="#//COLUMN_DEF"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="data" upperBound="-1" eType="#//Insert_List"
         containment="true"/>
   </eClassifiers>
