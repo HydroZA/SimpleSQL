@@ -56,7 +56,10 @@ class SimpleSQLGenerator extends AbstractGenerator
 	
 	dispatch def generate(SELECT ct)
 	{
-		return ""
+		return '''
+		SELECT «ct.name == 'all' ? '*' : ct.name»
+		FROM «ct.table»
+		'''
 	}
 	
 	

@@ -3,6 +3,7 @@
  */
 package kcl.mdd.cw.sql.generator;
 
+import com.google.common.base.Objects;
 import java.util.Arrays;
 import kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_DB;
@@ -68,7 +69,23 @@ public class SimpleSQLGenerator extends AbstractGenerator {
   }
   
   protected String _generate(final SELECT ct) {
-    return "";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("SELECT ");
+    String _xifexpression = null;
+    String _name = ct.getName();
+    boolean _equals = Objects.equal(_name, "all");
+    if (_equals) {
+      _xifexpression = "*";
+    } else {
+      _xifexpression = ct.getName();
+    }
+    _builder.append(_xifexpression);
+    _builder.newLineIfNotEmpty();
+    _builder.append("FROM ");
+    String _table = ct.getTable();
+    _builder.append(_table);
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
   }
   
   protected String _generate(final CREATE_TABLE ct) {

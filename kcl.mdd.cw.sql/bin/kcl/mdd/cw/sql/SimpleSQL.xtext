@@ -11,7 +11,7 @@ Statement:
 ;
 
 ORDERBY:
-	'order' 'by' table=[CREATE_TABLE] 'where'  
+	'order' 'by' table=[CREATE_TABLE] 'where' col=[COLUMN_DEF]
 ;
 
 WHERE:
