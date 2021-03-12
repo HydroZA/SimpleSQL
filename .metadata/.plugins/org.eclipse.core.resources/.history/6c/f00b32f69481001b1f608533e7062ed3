@@ -1,0 +1,30 @@
+grammar kcl.mdd.cw.sql.SimpleSQL with org.eclipse.xtext.common.Terminals
+
+generate simpleSQL "http://www.mdd.kcl/cw/sql/SimpleSQL"
+
+
+enum TYPES: string | int | double | date;
+
+Model:
+	statements+=Statement*
+;
+	
+Statement:
+	SELECT | CREATE_DB | CREATE_TABLE 
+;
+
+SELECT:
+	'show' (colName=ID|'all') 'in' table=ID
+;
+
+CREATE_DB:
+	'create' 'new' 'database' dbName=ID
+;
+
+CREATE_TABLE:
+	'create' 'new' 'table' tblName=ID 'in' dbName=ID 'with' 'columns' '(' columns+=COLUMN_DEF ')'
+;
+
+COLUMN_DEF:
+	name=ID 'with' 'type' 
+;
