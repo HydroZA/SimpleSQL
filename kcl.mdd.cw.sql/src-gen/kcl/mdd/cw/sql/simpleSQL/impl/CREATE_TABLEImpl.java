@@ -6,6 +6,7 @@ package kcl.mdd.cw.sql.simpleSQL.impl;
 import java.util.Collection;
 
 import kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF;
+import kcl.mdd.cw.sql.simpleSQL.CREATE_DB;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
 import kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage;
 
@@ -31,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.CREATE_TABLEImpl#getName <em>Name</em>}</li>
- *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.CREATE_TABLEImpl#getDbName <em>Db Name</em>}</li>
+ *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.CREATE_TABLEImpl#getDb <em>Db</em>}</li>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.impl.CREATE_TABLEImpl#getColumns <em>Columns</em>}</li>
  * </ul>
  *
@@ -60,24 +61,14 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getDbName() <em>Db Name</em>}' attribute.
+   * The cached value of the '{@link #getDb() <em>Db</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getDbName()
+   * @see #getDb()
    * @generated
    * @ordered
    */
-  protected static final String DB_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getDbName() <em>Db Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDbName()
-   * @generated
-   * @ordered
-   */
-  protected String dbName = DB_NAME_EDEFAULT;
+  protected CREATE_DB db;
 
   /**
    * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list.
@@ -141,9 +132,29 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
    * @generated
    */
   @Override
-  public String getDbName()
+  public CREATE_DB getDb()
   {
-    return dbName;
+    if (db != null && db.eIsProxy())
+    {
+      InternalEObject oldDb = (InternalEObject)db;
+      db = (CREATE_DB)eResolveProxy(oldDb);
+      if (db != oldDb)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimpleSQLPackage.CREATE_TABLE__DB, oldDb, db));
+      }
+    }
+    return db;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CREATE_DB basicGetDb()
+  {
+    return db;
   }
 
   /**
@@ -152,12 +163,12 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
    * @generated
    */
   @Override
-  public void setDbName(String newDbName)
+  public void setDb(CREATE_DB newDb)
   {
-    String oldDbName = dbName;
-    dbName = newDbName;
+    CREATE_DB oldDb = db;
+    db = newDb;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SimpleSQLPackage.CREATE_TABLE__DB_NAME, oldDbName, dbName));
+      eNotify(new ENotificationImpl(this, Notification.SET, SimpleSQLPackage.CREATE_TABLE__DB, oldDb, db));
   }
 
   /**
@@ -203,8 +214,9 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
     {
       case SimpleSQLPackage.CREATE_TABLE__NAME:
         return getName();
-      case SimpleSQLPackage.CREATE_TABLE__DB_NAME:
-        return getDbName();
+      case SimpleSQLPackage.CREATE_TABLE__DB:
+        if (resolve) return getDb();
+        return basicGetDb();
       case SimpleSQLPackage.CREATE_TABLE__COLUMNS:
         return getColumns();
     }
@@ -225,8 +237,8 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
       case SimpleSQLPackage.CREATE_TABLE__NAME:
         setName((String)newValue);
         return;
-      case SimpleSQLPackage.CREATE_TABLE__DB_NAME:
-        setDbName((String)newValue);
+      case SimpleSQLPackage.CREATE_TABLE__DB:
+        setDb((CREATE_DB)newValue);
         return;
       case SimpleSQLPackage.CREATE_TABLE__COLUMNS:
         getColumns().clear();
@@ -249,8 +261,8 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
       case SimpleSQLPackage.CREATE_TABLE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SimpleSQLPackage.CREATE_TABLE__DB_NAME:
-        setDbName(DB_NAME_EDEFAULT);
+      case SimpleSQLPackage.CREATE_TABLE__DB:
+        setDb((CREATE_DB)null);
         return;
       case SimpleSQLPackage.CREATE_TABLE__COLUMNS:
         getColumns().clear();
@@ -271,8 +283,8 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
     {
       case SimpleSQLPackage.CREATE_TABLE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SimpleSQLPackage.CREATE_TABLE__DB_NAME:
-        return DB_NAME_EDEFAULT == null ? dbName != null : !DB_NAME_EDEFAULT.equals(dbName);
+      case SimpleSQLPackage.CREATE_TABLE__DB:
+        return db != null;
       case SimpleSQLPackage.CREATE_TABLE__COLUMNS:
         return columns != null && !columns.isEmpty();
     }
@@ -292,8 +304,6 @@ public class CREATE_TABLEImpl extends StatementImpl implements CREATE_TABLE
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", dbName: ");
-    result.append(dbName);
     result.append(')');
     return result.toString();
   }

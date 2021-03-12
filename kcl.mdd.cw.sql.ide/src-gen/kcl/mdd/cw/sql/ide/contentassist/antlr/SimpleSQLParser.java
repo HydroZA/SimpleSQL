@@ -33,25 +33,33 @@ public class SimpleSQLParser extends AbstractContentAssistParser {
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, SimpleSQLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 			builder.put(grammarAccess.getSELECTAccess().getAlternatives_1(), "rule__SELECT__Alternatives_1");
+			builder.put(grammarAccess.getInsert_ListAccess().getAlternatives(), "rule__Insert_List__Alternatives");
 			builder.put(grammarAccess.getTYPEAccess().getAlternatives(), "rule__TYPE__Alternatives");
 			builder.put(grammarAccess.getSELECTAccess().getGroup(), "rule__SELECT__Group__0");
+			builder.put(grammarAccess.getUPDATEAccess().getGroup(), "rule__UPDATE__Group__0");
+			builder.put(grammarAccess.getDELETEAccess().getGroup(), "rule__DELETE__Group__0");
 			builder.put(grammarAccess.getCREATE_DBAccess().getGroup(), "rule__CREATE_DB__Group__0");
 			builder.put(grammarAccess.getCREATE_TABLEAccess().getGroup(), "rule__CREATE_TABLE__Group__0");
 			builder.put(grammarAccess.getCOLUMN_DEFAccess().getGroup(), "rule__COLUMN_DEF__Group__0");
 			builder.put(grammarAccess.getINSERTAccess().getGroup(), "rule__INSERT__Group__0");
-			builder.put(grammarAccess.getInsert_ListAccess().getGroup(), "rule__Insert_List__Group__0");
+			builder.put(grammarAccess.getInsert_ListAccess().getGroup_0(), "rule__Insert_List__Group_0__0");
+			builder.put(grammarAccess.getInsert_ListAccess().getGroup_1(), "rule__Insert_List__Group_1__0");
 			builder.put(grammarAccess.getModelAccess().getStatementsAssignment(), "rule__Model__StatementsAssignment");
 			builder.put(grammarAccess.getSELECTAccess().getNameAssignment_1_0(), "rule__SELECT__NameAssignment_1_0");
 			builder.put(grammarAccess.getSELECTAccess().getTableAssignment_3(), "rule__SELECT__TableAssignment_3");
+			builder.put(grammarAccess.getUPDATEAccess().getTableAssignment_3(), "rule__UPDATE__TableAssignment_3");
+			builder.put(grammarAccess.getUPDATEAccess().getDataAssignment_7(), "rule__UPDATE__DataAssignment_7");
+			builder.put(grammarAccess.getDELETEAccess().getTableAssignment_3(), "rule__DELETE__TableAssignment_3");
+			builder.put(grammarAccess.getDELETEAccess().getDataAssignment_7(), "rule__DELETE__DataAssignment_7");
 			builder.put(grammarAccess.getCREATE_DBAccess().getNameAssignment_3(), "rule__CREATE_DB__NameAssignment_3");
 			builder.put(grammarAccess.getCREATE_TABLEAccess().getNameAssignment_3(), "rule__CREATE_TABLE__NameAssignment_3");
-			builder.put(grammarAccess.getCREATE_TABLEAccess().getDbNameAssignment_5(), "rule__CREATE_TABLE__DbNameAssignment_5");
+			builder.put(grammarAccess.getCREATE_TABLEAccess().getDbAssignment_5(), "rule__CREATE_TABLE__DbAssignment_5");
 			builder.put(grammarAccess.getCREATE_TABLEAccess().getColumnsAssignment_9(), "rule__CREATE_TABLE__ColumnsAssignment_9");
 			builder.put(grammarAccess.getCOLUMN_DEFAccess().getNameAssignment_0(), "rule__COLUMN_DEF__NameAssignment_0");
 			builder.put(grammarAccess.getCOLUMN_DEFAccess().getTypeAssignment_3(), "rule__COLUMN_DEF__TypeAssignment_3");
 			builder.put(grammarAccess.getINSERTAccess().getTableAssignment_3(), "rule__INSERT__TableAssignment_3");
-			builder.put(grammarAccess.getINSERTAccess().getDataAssignment_6(), "rule__INSERT__DataAssignment_6");
-			builder.put(grammarAccess.getInsert_ListAccess().getDataAssignment_1(), "rule__Insert_List__DataAssignment_1");
+			builder.put(grammarAccess.getINSERTAccess().getDataAssignment_7(), "rule__INSERT__DataAssignment_7");
+			builder.put(grammarAccess.getInsert_ListAccess().getDataAssignment_0_1(), "rule__Insert_List__DataAssignment_0_1");
 		}
 	}
 	

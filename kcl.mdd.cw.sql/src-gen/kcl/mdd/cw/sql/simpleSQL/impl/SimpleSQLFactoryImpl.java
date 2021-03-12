@@ -69,6 +69,8 @@ public class SimpleSQLFactoryImpl extends EFactoryImpl implements SimpleSQLFacto
       case SimpleSQLPackage.MODEL: return createModel();
       case SimpleSQLPackage.STATEMENT: return createStatement();
       case SimpleSQLPackage.SELECT: return createSELECT();
+      case SimpleSQLPackage.UPDATE: return createUPDATE();
+      case SimpleSQLPackage.DELETE: return createDELETE();
       case SimpleSQLPackage.CREATE_DB: return createCREATE_DB();
       case SimpleSQLPackage.CREATE_TABLE: return createCREATE_TABLE();
       case SimpleSQLPackage.COLUMN_DEF: return createCOLUMN_DEF();
@@ -147,6 +149,30 @@ public class SimpleSQLFactoryImpl extends EFactoryImpl implements SimpleSQLFacto
   {
     SELECTImpl select = new SELECTImpl();
     return select;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public UPDATE createUPDATE()
+  {
+    UPDATEImpl update = new UPDATEImpl();
+    return update;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DELETE createDELETE()
+  {
+    DELETEImpl delete = new DELETEImpl();
+    return delete;
   }
 
   /**

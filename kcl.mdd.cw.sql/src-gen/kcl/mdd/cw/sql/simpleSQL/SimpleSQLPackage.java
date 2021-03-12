@@ -143,6 +143,80 @@ public interface SimpleSQLPackage extends EPackage
   int SELECT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl <em>UPDATE</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getUPDATE()
+   * @generated
+   */
+  int UPDATE = 3;
+
+  /**
+   * The feature id for the '<em><b>Table</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE__TABLE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Data</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE__DATA = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>UPDATE</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int UPDATE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.DELETEImpl <em>DELETE</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.DELETEImpl
+   * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getDELETE()
+   * @generated
+   */
+  int DELETE = 4;
+
+  /**
+   * The feature id for the '<em><b>Table</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE__TABLE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Data</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE__DATA = STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>DELETE</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELETE_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.CREATE_DBImpl <em>CREATE DB</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -150,7 +224,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getCREATE_DB()
    * @generated
    */
-  int CREATE_DB = 3;
+  int CREATE_DB = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -178,7 +252,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getCREATE_TABLE()
    * @generated
    */
-  int CREATE_TABLE = 4;
+  int CREATE_TABLE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -190,13 +264,13 @@ public interface SimpleSQLPackage extends EPackage
   int CREATE_TABLE__NAME = STATEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Db Name</b></em>' attribute.
+   * The feature id for the '<em><b>Db</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CREATE_TABLE__DB_NAME = STATEMENT_FEATURE_COUNT + 1;
+  int CREATE_TABLE__DB = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -224,7 +298,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getCOLUMN_DEF()
    * @generated
    */
-  int COLUMN_DEF = 5;
+  int COLUMN_DEF = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -261,7 +335,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getINSERT()
    * @generated
    */
-  int INSERT = 6;
+  int INSERT = 8;
 
   /**
    * The feature id for the '<em><b>Table</b></em>' reference.
@@ -298,7 +372,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getInsert_List()
    * @generated
    */
-  int INSERT_LIST = 7;
+  int INSERT_LIST = 9;
 
   /**
    * The feature id for the '<em><b>Data</b></em>' attribute.
@@ -326,7 +400,7 @@ public interface SimpleSQLPackage extends EPackage
    * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getTYPE()
    * @generated
    */
-  int TYPE = 8;
+  int TYPE = 10;
 
 
   /**
@@ -393,6 +467,70 @@ public interface SimpleSQLPackage extends EPackage
   EAttribute getSELECT_Table();
 
   /**
+   * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.UPDATE <em>UPDATE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>UPDATE</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.UPDATE
+   * @generated
+   */
+  EClass getUPDATE();
+
+  /**
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getTable <em>Table</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Table</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.UPDATE#getTable()
+   * @see #getUPDATE()
+   * @generated
+   */
+  EReference getUPDATE_Table();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link kcl.mdd.cw.sql.simpleSQL.UPDATE#getData <em>Data</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Data</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.UPDATE#getData()
+   * @see #getUPDATE()
+   * @generated
+   */
+  EReference getUPDATE_Data();
+
+  /**
+   * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.DELETE <em>DELETE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>DELETE</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.DELETE
+   * @generated
+   */
+  EClass getDELETE();
+
+  /**
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.DELETE#getTable <em>Table</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Table</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.DELETE#getTable()
+   * @see #getDELETE()
+   * @generated
+   */
+  EReference getDELETE_Table();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link kcl.mdd.cw.sql.simpleSQL.DELETE#getData <em>Data</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Data</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.DELETE#getData()
+   * @see #getDELETE()
+   * @generated
+   */
+  EReference getDELETE_Data();
+
+  /**
    * Returns the meta object for class '{@link kcl.mdd.cw.sql.simpleSQL.CREATE_DB <em>CREATE DB</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -435,15 +573,15 @@ public interface SimpleSQLPackage extends EPackage
   EAttribute getCREATE_TABLE_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDbName <em>Db Name</em>}'.
+   * Returns the meta object for the reference '{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDb <em>Db</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Db Name</em>'.
-   * @see kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDbName()
+   * @return the meta object for the reference '<em>Db</em>'.
+   * @see kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDb()
    * @see #getCREATE_TABLE()
    * @generated
    */
-  EAttribute getCREATE_TABLE_DbName();
+  EReference getCREATE_TABLE_Db();
 
   /**
    * Returns the meta object for the containment reference list '{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getColumns <em>Columns</em>}'.
@@ -629,6 +767,58 @@ public interface SimpleSQLPackage extends EPackage
     EAttribute SELECT__TABLE = eINSTANCE.getSELECT_Table();
 
     /**
+     * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl <em>UPDATE</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.UPDATEImpl
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getUPDATE()
+     * @generated
+     */
+    EClass UPDATE = eINSTANCE.getUPDATE();
+
+    /**
+     * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UPDATE__TABLE = eINSTANCE.getUPDATE_Table();
+
+    /**
+     * The meta object literal for the '<em><b>Data</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference UPDATE__DATA = eINSTANCE.getUPDATE_Data();
+
+    /**
+     * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.DELETEImpl <em>DELETE</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.DELETEImpl
+     * @see kcl.mdd.cw.sql.simpleSQL.impl.SimpleSQLPackageImpl#getDELETE()
+     * @generated
+     */
+    EClass DELETE = eINSTANCE.getDELETE();
+
+    /**
+     * The meta object literal for the '<em><b>Table</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DELETE__TABLE = eINSTANCE.getDELETE_Table();
+
+    /**
+     * The meta object literal for the '<em><b>Data</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DELETE__DATA = eINSTANCE.getDELETE_Data();
+
+    /**
      * The meta object literal for the '{@link kcl.mdd.cw.sql.simpleSQL.impl.CREATE_DBImpl <em>CREATE DB</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -665,12 +855,12 @@ public interface SimpleSQLPackage extends EPackage
     EAttribute CREATE_TABLE__NAME = eINSTANCE.getCREATE_TABLE_Name();
 
     /**
-     * The meta object literal for the '<em><b>Db Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Db</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute CREATE_TABLE__DB_NAME = eINSTANCE.getCREATE_TABLE_DbName();
+    EReference CREATE_TABLE__DB = eINSTANCE.getCREATE_TABLE_Db();
 
     /**
      * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.

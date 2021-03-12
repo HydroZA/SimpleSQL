@@ -3,10 +3,23 @@
  */
 package kcl.mdd.cw.sql.generator;
 
+import java.util.Arrays;
+import kcl.mdd.cw.sql.simpleSQL.CREATE_DB;
+import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
+import kcl.mdd.cw.sql.simpleSQL.DELETE;
+import kcl.mdd.cw.sql.simpleSQL.INSERT;
+import kcl.mdd.cw.sql.simpleSQL.Model;
+import kcl.mdd.cw.sql.simpleSQL.SELECT;
+import kcl.mdd.cw.sql.simpleSQL.Statement;
+import kcl.mdd.cw.sql.simpleSQL.UPDATE;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +30,69 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class SimpleSQLGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EObject _head = IterableExtensions.<EObject>head(resource.getContents());
+    final Model model = ((Model) _head);
+    fsa.generateFile(this.deriveTargetFileNameFor(model, resource), 
+      this.doGenerate(model));
+  }
+  
+  public String deriveTargetFileNameFor(final Model model, final Resource resource) {
+    return resource.getURI().appendFileExtension(".sql").lastSegment();
+  }
+  
+  public String doGenerate(final Model m) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      EList<Statement> _statements = m.getStatements();
+      for(final Statement s : _statements) {
+        String _doGenerate = this.doGenerate(s);
+        _builder.append(_doGenerate);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder.toString();
+  }
+  
+  protected String _doGenerate(final INSERT ct) {
+    return "";
+  }
+  
+  protected String _doGenerate(final DELETE ct) {
+    return "";
+  }
+  
+  protected String _doGenerate(final UPDATE ct) {
+    return "";
+  }
+  
+  protected String _doGenerate(final SELECT ct) {
+    return "";
+  }
+  
+  protected String _doGenerate(final CREATE_TABLE ct) {
+    return "";
+  }
+  
+  protected String _doGenerate(final CREATE_DB cd) {
+    return "";
+  }
+  
+  public String doGenerate(final Statement cd) {
+    if (cd instanceof CREATE_DB) {
+      return _doGenerate((CREATE_DB)cd);
+    } else if (cd instanceof CREATE_TABLE) {
+      return _doGenerate((CREATE_TABLE)cd);
+    } else if (cd instanceof DELETE) {
+      return _doGenerate((DELETE)cd);
+    } else if (cd instanceof INSERT) {
+      return _doGenerate((INSERT)cd);
+    } else if (cd instanceof SELECT) {
+      return _doGenerate((SELECT)cd);
+    } else if (cd instanceof UPDATE) {
+      return _doGenerate((UPDATE)cd);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cd).toString());
+    }
   }
 }

@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getName <em>Name</em>}</li>
- *   <li>{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDbName <em>Db Name</em>}</li>
+ *   <li>{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDb <em>Db</em>}</li>
  *   <li>{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getColumns <em>Columns</em>}</li>
  * </ul>
  *
@@ -48,26 +48,26 @@ public interface CREATE_TABLE extends Statement
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Db Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Db</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Db Name</em>' attribute.
-   * @see #setDbName(String)
-   * @see kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage#getCREATE_TABLE_DbName()
+   * @return the value of the '<em>Db</em>' reference.
+   * @see #setDb(CREATE_DB)
+   * @see kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage#getCREATE_TABLE_Db()
    * @model
    * @generated
    */
-  String getDbName();
+  CREATE_DB getDb();
 
   /**
-   * Sets the value of the '{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDbName <em>Db Name</em>}' attribute.
+   * Sets the value of the '{@link kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE#getDb <em>Db</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Db Name</em>' attribute.
-   * @see #getDbName()
+   * @param value the new value of the '<em>Db</em>' reference.
+   * @see #getDb()
    * @generated
    */
-  void setDbName(String value);
+  void setDb(CREATE_DB value);
 
   /**
    * Returns the value of the '<em><b>Columns</b></em>' containment reference list.

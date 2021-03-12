@@ -51,6 +51,20 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass updateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deleteEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass creatE_DBEClass = null;
 
   /**
@@ -223,6 +237,72 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
    * @generated
    */
   @Override
+  public EClass getUPDATE()
+  {
+    return updateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getUPDATE_Table()
+  {
+    return (EReference)updateEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getUPDATE_Data()
+  {
+    return (EReference)updateEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDELETE()
+  {
+    return deleteEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDELETE_Table()
+  {
+    return (EReference)deleteEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDELETE_Data()
+  {
+    return (EReference)deleteEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getCREATE_DB()
   {
     return creatE_DBEClass;
@@ -267,9 +347,9 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
    * @generated
    */
   @Override
-  public EAttribute getCREATE_TABLE_DbName()
+  public EReference getCREATE_TABLE_Db()
   {
-    return (EAttribute)creatE_TABLEEClass.getEStructuralFeatures().get(1);
+    return (EReference)creatE_TABLEEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -422,12 +502,20 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
     createEAttribute(selectEClass, SELECT__NAME);
     createEAttribute(selectEClass, SELECT__TABLE);
 
+    updateEClass = createEClass(UPDATE);
+    createEReference(updateEClass, UPDATE__TABLE);
+    createEReference(updateEClass, UPDATE__DATA);
+
+    deleteEClass = createEClass(DELETE);
+    createEReference(deleteEClass, DELETE__TABLE);
+    createEReference(deleteEClass, DELETE__DATA);
+
     creatE_DBEClass = createEClass(CREATE_DB);
     createEAttribute(creatE_DBEClass, CREATE_DB__NAME);
 
     creatE_TABLEEClass = createEClass(CREATE_TABLE);
     createEAttribute(creatE_TABLEEClass, CREATE_TABLE__NAME);
-    createEAttribute(creatE_TABLEEClass, CREATE_TABLE__DB_NAME);
+    createEReference(creatE_TABLEEClass, CREATE_TABLE__DB);
     createEReference(creatE_TABLEEClass, CREATE_TABLE__COLUMNS);
 
     columN_DEFEClass = createEClass(COLUMN_DEF);
@@ -475,6 +563,8 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
 
     // Add supertypes to classes
     selectEClass.getESuperTypes().add(this.getStatement());
+    updateEClass.getESuperTypes().add(this.getStatement());
+    deleteEClass.getESuperTypes().add(this.getStatement());
     creatE_DBEClass.getESuperTypes().add(this.getStatement());
     creatE_TABLEEClass.getESuperTypes().add(this.getStatement());
     insertEClass.getESuperTypes().add(this.getStatement());
@@ -489,12 +579,20 @@ public class SimpleSQLPackageImpl extends EPackageImpl implements SimpleSQLPacka
     initEAttribute(getSELECT_Name(), ecorePackage.getEString(), "name", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.SELECT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSELECT_Table(), ecorePackage.getEString(), "table", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.SELECT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(updateEClass, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, "UPDATE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUPDATE_Table(), this.getCREATE_TABLE(), null, "table", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUPDATE_Data(), this.getInsert_List(), null, "data", null, 0, -1, kcl.mdd.cw.sql.simpleSQL.UPDATE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(deleteEClass, kcl.mdd.cw.sql.simpleSQL.DELETE.class, "DELETE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDELETE_Table(), this.getCREATE_TABLE(), null, "table", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.DELETE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDELETE_Data(), this.getInsert_List(), null, "data", null, 0, -1, kcl.mdd.cw.sql.simpleSQL.DELETE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(creatE_DBEClass, kcl.mdd.cw.sql.simpleSQL.CREATE_DB.class, "CREATE_DB", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCREATE_DB_Name(), ecorePackage.getEString(), "name", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.CREATE_DB.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(creatE_TABLEEClass, kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE.class, "CREATE_TABLE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCREATE_TABLE_Name(), ecorePackage.getEString(), "name", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getCREATE_TABLE_DbName(), ecorePackage.getEString(), "dbName", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCREATE_TABLE_Db(), this.getCREATE_DB(), null, "db", null, 0, 1, kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCREATE_TABLE_Columns(), this.getCOLUMN_DEF(), null, "columns", null, 0, -1, kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(columN_DEFEClass, kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF.class, "COLUMN_DEF", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

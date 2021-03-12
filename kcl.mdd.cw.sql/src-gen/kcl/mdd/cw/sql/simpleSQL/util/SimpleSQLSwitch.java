@@ -95,6 +95,22 @@ public class SimpleSQLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SimpleSQLPackage.UPDATE:
+      {
+        UPDATE update = (UPDATE)theEObject;
+        T result = caseUPDATE(update);
+        if (result == null) result = caseStatement(update);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SimpleSQLPackage.DELETE:
+      {
+        DELETE delete = (DELETE)theEObject;
+        T result = caseDELETE(delete);
+        if (result == null) result = caseStatement(delete);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SimpleSQLPackage.CREATE_DB:
       {
         CREATE_DB creatE_DB = (CREATE_DB)theEObject;
@@ -181,6 +197,38 @@ public class SimpleSQLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSELECT(SELECT object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>UPDATE</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>UPDATE</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUPDATE(UPDATE object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>DELETE</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>DELETE</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDELETE(DELETE object)
   {
     return null;
   }
