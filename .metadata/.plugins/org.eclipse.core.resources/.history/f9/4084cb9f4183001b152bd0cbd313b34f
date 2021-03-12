@@ -31,7 +31,7 @@ UPDATE:
 ;
 
 DELETE:
-	'delete' 'entry' 'from' table=[CREATE_TABLE] 'where' x=[Insert_List]
+	'delete' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')'
 ;
 
 CREATE_DB:
