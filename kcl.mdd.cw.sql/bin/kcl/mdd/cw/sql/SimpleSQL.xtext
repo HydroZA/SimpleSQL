@@ -7,7 +7,19 @@ Model:
 ;
 	
 Statement:
-	SELECT | CREATE_DB | CREATE_TABLE | INSERT | DELETE | UPDATE
+	SELECT | CREATE_DB | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN | WHERE | ORDERBY 
+;
+
+ORDERBY:
+	'order' 'by' table=[CREATE_TABLE] 'where'  
+;
+
+WHERE:
+	'where' 'to' 'table' name=ID 'in' db=[CREATE_DB] 'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
+;
+
+INNERJOIN:
+	'inner' 'join' table=[CREATE_TABLE] 'on'  
 ;
 
 SELECT:
@@ -15,7 +27,7 @@ SELECT:
 ;
 
 UPDATE:
-	'Update' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')'
+	'update' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')'
 ;
 
 DELETE:
