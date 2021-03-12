@@ -148,6 +148,24 @@ ruleStatement returns [EObject current=null]
 			$current = $this_INSERT_3.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getDELETEParserRuleCall_4());
+		}
+		this_DELETE_4=ruleDELETE
+		{
+			$current = $this_DELETE_4.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getStatementAccess().getUPDATEParserRuleCall_5());
+		}
+		this_UPDATE_5=ruleUPDATE
+		{
+			$current = $this_UPDATE_5.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -218,6 +236,164 @@ ruleSELECT returns [EObject current=null]
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleUPDATE
+entryRuleUPDATE returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getUPDATERule()); }
+	iv_ruleUPDATE=ruleUPDATE
+	{ $current=$iv_ruleUPDATE.current; }
+	EOF;
+
+// Rule UPDATE
+ruleUPDATE returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='Update'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getUPDATEAccess().getUpdateKeyword_0());
+		}
+		otherlv_1='entry'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getUPDATEAccess().getEntryKeyword_1());
+		}
+		otherlv_2='to'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getUPDATEAccess().getToKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getUPDATERule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getUPDATEAccess().getTableCREATE_TABLECrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='with'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getUPDATEAccess().getWithKeyword_4());
+		}
+		otherlv_5='data'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getUPDATEAccess().getDataKeyword_5());
+		}
+		otherlv_6='('
+		{
+			newLeafNode(otherlv_6, grammarAccess.getUPDATEAccess().getLeftParenthesisKeyword_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getUPDATEAccess().getDataInsert_ListParserRuleCall_7_0());
+				}
+				lv_data_7_0=ruleInsert_List
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getUPDATERule());
+					}
+					add(
+						$current,
+						"data",
+						lv_data_7_0,
+						"kcl.mdd.cw.sql.SimpleSQL.Insert_List");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_8=')'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getUPDATEAccess().getRightParenthesisKeyword_8());
+		}
+	)
+;
+
+// Entry rule entryRuleDELETE
+entryRuleDELETE returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDELETERule()); }
+	iv_ruleDELETE=ruleDELETE
+	{ $current=$iv_ruleDELETE.current; }
+	EOF;
+
+// Rule DELETE
+ruleDELETE returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='delete'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getDELETEAccess().getDeleteKeyword_0());
+		}
+		otherlv_1='entry'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getDELETEAccess().getEntryKeyword_1());
+		}
+		otherlv_2='to'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getDELETEAccess().getToKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDELETERule());
+					}
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getDELETEAccess().getTableCREATE_TABLECrossReference_3_0());
+				}
+			)
+		)
+		otherlv_4='with'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getDELETEAccess().getWithKeyword_4());
+		}
+		otherlv_5='data'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getDELETEAccess().getDataKeyword_5());
+		}
+		otherlv_6='('
+		{
+			newLeafNode(otherlv_6, grammarAccess.getDELETEAccess().getLeftParenthesisKeyword_6());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDELETEAccess().getDataInsert_ListParserRuleCall_7_0());
+				}
+				lv_data_7_0=ruleInsert_List
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDELETERule());
+					}
+					add(
+						$current,
+						"data",
+						lv_data_7_0,
+						"kcl.mdd.cw.sql.SimpleSQL.Insert_List");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)+
+		otherlv_8=')'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getDELETEAccess().getRightParenthesisKeyword_8());
+		}
 	)
 ;
 
@@ -322,19 +498,14 @@ ruleCREATE_TABLE returns [EObject current=null]
 		}
 		(
 			(
-				lv_dbName_5_0=RULE_ID
-				{
-					newLeafNode(lv_dbName_5_0, grammarAccess.getCREATE_TABLEAccess().getDbNameIDTerminalRuleCall_5_0());
-				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getCREATE_TABLERule());
 					}
-					setWithLastConsumed(
-						$current,
-						"dbName",
-						lv_dbName_5_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+				}
+				otherlv_5=RULE_ID
+				{
+					newLeafNode(otherlv_5, grammarAccess.getCREATE_TABLEAccess().getDbCREATE_DBCrossReference_5_0());
 				}
 			)
 		)
@@ -485,16 +656,20 @@ ruleINSERT returns [EObject current=null]
 		{
 			newLeafNode(otherlv_4, grammarAccess.getINSERTAccess().getWithKeyword_4());
 		}
-		otherlv_5='columns'
+		otherlv_5='data'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getINSERTAccess().getColumnsKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getINSERTAccess().getDataKeyword_5());
+		}
+		otherlv_6='('
+		{
+			newLeafNode(otherlv_6, grammarAccess.getINSERTAccess().getLeftParenthesisKeyword_6());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getINSERTAccess().getDataInsert_ListParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getINSERTAccess().getDataInsert_ListParserRuleCall_7_0());
 				}
-				lv_data_6_0=ruleInsert_List
+				lv_data_7_0=ruleInsert_List
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getINSERTRule());
@@ -502,12 +677,16 @@ ruleINSERT returns [EObject current=null]
 					add(
 						$current,
 						"data",
-						lv_data_6_0,
+						lv_data_7_0,
 						"kcl.mdd.cw.sql.SimpleSQL.Insert_List");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
+		otherlv_8=')'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getINSERTAccess().getRightParenthesisKeyword_8());
+		}
 	)
 ;
 
@@ -527,32 +706,41 @@ ruleInsert_List returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='"'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getInsert_ListAccess().getQuotationMarkKeyword_0());
-		}
 		(
+			otherlv_0='"'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getInsert_ListAccess().getQuotationMarkKeyword_0_0());
+			}
 			(
-				lv_data_1_0=RULE_STRING
-				{
-					newLeafNode(lv_data_1_0, grammarAccess.getInsert_ListAccess().getDataSTRINGTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getInsert_ListRule());
+				(
+					lv_data_1_0=RULE_STRING
+					{
+						newLeafNode(lv_data_1_0, grammarAccess.getInsert_ListAccess().getDataSTRINGTerminalRuleCall_0_1_0());
 					}
-					setWithLastConsumed(
-						$current,
-						"data",
-						lv_data_1_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getInsert_ListRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"data",
+							lv_data_1_0,
+							"org.eclipse.xtext.common.Terminals.STRING");
+					}
+				)
 			)
 		)
-		otherlv_2='"'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getInsert_ListAccess().getQuotationMarkKeyword_2());
-		}
+		    |
+		(
+			this_INT_2=RULE_INT
+			{
+				newLeafNode(this_INT_2, grammarAccess.getInsert_ListAccess().getINTTerminalRuleCall_1_0());
+			}
+			otherlv_3='"'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getInsert_ListAccess().getQuotationMarkKeyword_1_1());
+			}
+		)
 	)
 ;
 

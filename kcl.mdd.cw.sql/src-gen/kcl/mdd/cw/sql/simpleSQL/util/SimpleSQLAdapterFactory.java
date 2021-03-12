@@ -91,6 +91,16 @@ public class SimpleSQLAdapterFactory extends AdapterFactoryImpl
         return createSELECTAdapter();
       }
       @Override
+      public Adapter caseUPDATE(UPDATE object)
+      {
+        return createUPDATEAdapter();
+      }
+      @Override
+      public Adapter caseDELETE(DELETE object)
+      {
+        return createDELETEAdapter();
+      }
+      @Override
       public Adapter caseCREATE_DB(CREATE_DB object)
       {
         return createCREATE_DBAdapter();
@@ -178,6 +188,36 @@ public class SimpleSQLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSELECTAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kcl.mdd.cw.sql.simpleSQL.UPDATE <em>UPDATE</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kcl.mdd.cw.sql.simpleSQL.UPDATE
+   * @generated
+   */
+  public Adapter createUPDATEAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kcl.mdd.cw.sql.simpleSQL.DELETE <em>DELETE</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kcl.mdd.cw.sql.simpleSQL.DELETE
+   * @generated
+   */
+  public Adapter createDELETEAdapter()
   {
     return null;
   }

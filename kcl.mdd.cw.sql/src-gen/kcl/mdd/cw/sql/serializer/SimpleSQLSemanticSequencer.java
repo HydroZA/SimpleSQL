@@ -9,11 +9,13 @@ import kcl.mdd.cw.sql.services.SimpleSQLGrammarAccess;
 import kcl.mdd.cw.sql.simpleSQL.COLUMN_DEF;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_DB;
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
+import kcl.mdd.cw.sql.simpleSQL.DELETE;
 import kcl.mdd.cw.sql.simpleSQL.INSERT;
 import kcl.mdd.cw.sql.simpleSQL.Insert_List;
 import kcl.mdd.cw.sql.simpleSQL.Model;
 import kcl.mdd.cw.sql.simpleSQL.SELECT;
 import kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage;
+import kcl.mdd.cw.sql.simpleSQL.UPDATE;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
@@ -47,6 +49,9 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 			case SimpleSQLPackage.CREATE_TABLE:
 				sequence_CREATE_TABLE(context, (CREATE_TABLE) semanticObject); 
 				return; 
+			case SimpleSQLPackage.DELETE:
+				sequence_DELETE(context, (DELETE) semanticObject); 
+				return; 
 			case SimpleSQLPackage.INSERT:
 				sequence_INSERT(context, (INSERT) semanticObject); 
 				return; 
@@ -58,6 +63,9 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 				return; 
 			case SimpleSQLPackage.SELECT:
 				sequence_SELECT(context, (SELECT) semanticObject); 
+				return; 
+			case SimpleSQLPackage.UPDATE:
+				sequence_UPDATE(context, (UPDATE) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -110,9 +118,22 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     CREATE_TABLE returns CREATE_TABLE
 	 *
 	 * Constraint:
-	 *     (name=ID dbName=ID columns+=COLUMN_DEF+)
+	 *     (name=ID db=[CREATE_DB|ID] columns+=COLUMN_DEF+)
 	 */
 	protected void sequence_CREATE_TABLE(ISerializationContext context, CREATE_TABLE semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns DELETE
+	 *     DELETE returns DELETE
+	 *
+	 * Constraint:
+	 *     (table=[CREATE_TABLE|ID] data+=Insert_List+)
+	 */
+	protected void sequence_DELETE(ISerializationContext context, DELETE semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -143,7 +164,7 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SimpleSQLPackage.Literals.INSERT_LIST__DATA));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getInsert_ListAccess().getDataSTRINGTerminalRuleCall_1_0(), semanticObject.getData());
+		feeder.accept(grammarAccess.getInsert_ListAccess().getDataSTRINGTerminalRuleCall_0_1_0(), semanticObject.getData());
 		feeder.finish();
 	}
 	
@@ -169,6 +190,19 @@ public class SimpleSQLSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     (name=ID? table=ID)
 	 */
 	protected void sequence_SELECT(ISerializationContext context, SELECT semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns UPDATE
+	 *     UPDATE returns UPDATE
+	 *
+	 * Constraint:
+	 *     (table=[CREATE_TABLE|ID] data+=Insert_List+)
+	 */
+	protected void sequence_UPDATE(ISerializationContext context, UPDATE semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -20,12 +20,20 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleSQL.ecore#//SELECT/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleSQL.ecore#//SELECT/table"/>
     </genClasses>
+    <genClasses ecoreClass="SimpleSQL.ecore#//UPDATE">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimpleSQL.ecore#//UPDATE/table"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleSQL.ecore#//UPDATE/data"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleSQL.ecore#//DELETE">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimpleSQL.ecore#//DELETE/table"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleSQL.ecore#//DELETE/data"/>
+    </genClasses>
     <genClasses ecoreClass="SimpleSQL.ecore#//CREATE_DB">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleSQL.ecore#//CREATE_DB/name"/>
     </genClasses>
     <genClasses ecoreClass="SimpleSQL.ecore#//CREATE_TABLE">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleSQL.ecore#//CREATE_TABLE/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleSQL.ecore#//CREATE_TABLE/dbName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimpleSQL.ecore#//CREATE_TABLE/db"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleSQL.ecore#//CREATE_TABLE/columns"/>
     </genClasses>
     <genClasses ecoreClass="SimpleSQL.ecore#//COLUMN_DEF">

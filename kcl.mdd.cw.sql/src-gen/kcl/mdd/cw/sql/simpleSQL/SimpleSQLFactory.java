@@ -51,6 +51,24 @@ public interface SimpleSQLFactory extends EFactory
   SELECT createSELECT();
 
   /**
+   * Returns a new object of class '<em>UPDATE</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>UPDATE</em>'.
+   * @generated
+   */
+  UPDATE createUPDATE();
+
+  /**
+   * Returns a new object of class '<em>DELETE</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>DELETE</em>'.
+   * @generated
+   */
+  DELETE createDELETE();
+
+  /**
    * Returns a new object of class '<em>CREATE DB</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
