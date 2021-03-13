@@ -7,7 +7,11 @@ Model:
 ;
 	
 Statement:
-	SELECT | CREATE_DB | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN | WHERE | ORDERBY 
+	SELECT | CREATE_DB | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN | WHERE | ORDERBY | GROUPBY
+;
+
+GROUPBY:
+	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')'
 ;
 
 ORDERBY:
