@@ -19,7 +19,7 @@ WHERE:
 ;
 
 INNERJOIN:
-	'inner' 'join' table=[CREATE_TABLE] 'on'  
+	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' '(' cols+=[COLUMN_DEF]+ ')'
 ;
 
 SELECT:
