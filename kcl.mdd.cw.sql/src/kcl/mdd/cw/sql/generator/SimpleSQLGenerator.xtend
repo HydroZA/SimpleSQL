@@ -41,12 +41,22 @@ class SimpleSQLGenerator extends AbstractGenerator
 	
 	dispatch def generate(INSERT ct)
 	{
-		return ""
+		return '''
+		INSERT INTO «ct.table» (
+		«FOR data : ct.data SEPARATOR ','»
+			«data»
+		«ENDFOR»
+		);
+		'''
 	}
 	
+	
+	// TODO: Update to allow only deleting single rows
 	dispatch def generate(DELETE ct)
 	{
-		return ""
+		return '''
+		DELETE FROM «ct.table»
+		'''
 	}
 	
 	dispatch def generate(UPDATE ct)
@@ -56,7 +66,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 			SET «FOR col : ct.cols SEPARATOR ','»
 				«col.name»
 				«ENDFOR»
-			
+			;
 		'''
 	}
 	
@@ -66,6 +76,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		return '''
 		SELECT «ct.name == 'all' ? '*' : ct.name»
 		FROM «ct.table»
+		;
 		'''
 	}
 	
@@ -77,12 +88,12 @@ class SimpleSQLGenerator extends AbstractGenerator
 		«FOR col : ct.columns SEPARATOR ','»
 			«col.name» «col.type == 'string' ? 'VARCHAR(255)' : col.type»
 		«ENDFOR»
-		)
+		);
 		'''
 	}
 	
 	dispatch def generate(CREATE_DB cd)
 	{
-		return "CREATE DATABASE " + cd.name
+		return '''CREATE DATABASE «cd.name»;'''
 	}	
 }
