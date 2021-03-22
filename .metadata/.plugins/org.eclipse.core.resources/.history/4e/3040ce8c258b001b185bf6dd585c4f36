@@ -1,0 +1,57 @@
+grammar kcl.mdd.cw.sql.SimpleSQL with org.eclipse.xtext.common.Terminals
+
+generate simpleSQL "http://www.mdd.kcl/cw/sql/SimpleSQL"
+
+Model:
+	statements+=Statement*
+;
+	
+Statement:
+	SELECT | CREATE_DB | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN | WHERE | ORDERBY | GROUPBY
+;
+
+GROUPBY:
+	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')'
+;
+
+ORDERBY:
+	'order' 'by' table=[CREATE_TABLE] 'where' col=[COLUMN_DEF]
+;
+
+WHERE:
+	'where' 'to' 'table' name=ID 'in' db=[CREATE_DB] 'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
+;
+
+INNERJOIN:
+	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' '(' cols+=[COLUMN_DEF]+ ')'
+;
+
+SELECT:
+	'show' (name=ID|'all') 'in' table=ID
+;
+
+UPDATE:
+	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=Insert_List+ ')'
+;
+
+DELETE:
+	'delete' 'entry' 'from' table=[CREATE_TABLE] 'where' x=[Insert_List]
+;
+
+CREATE_DB:
+	'create' 'new' 'database' name=ID
+;
+
+CREATE_TABLE:
+	'create' 'new' 'table' name=ID 'in' db=[CREATE_DB] 'with' 'columns' '(' columns+=COLUMN_DEF+ ')'
+;
+
+COLUMN_DEF:
+	name=ID 'with' 'type' type=TYPE
+;
+
+INSERT:
+	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
+;
+
+enum TYPE: string | int | double | date;

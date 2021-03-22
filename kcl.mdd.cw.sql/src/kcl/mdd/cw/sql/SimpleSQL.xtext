@@ -31,11 +31,11 @@ SELECT:
 ;
 
 UPDATE:
-	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=Insert_List+ ')'
+	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=STRING+ ')'
 ;
 
 DELETE:
-	'delete' 'entry' 'from' table=[CREATE_TABLE] 'where' x=[Insert_List]
+	'delete' 'entry' 'from' table=[CREATE_TABLE] 'where' x=STRING
 ;
 
 CREATE_DB:
@@ -51,11 +51,7 @@ COLUMN_DEF:
 ;
 
 INSERT:
-	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=Insert_List+ ')'
+	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
 ;
 
-Insert_List:
-	'"' data=STRING '"'
-;
-
-enum TYPE: string | int | double | date;
+enum TYPE: string | int | decimal | date;

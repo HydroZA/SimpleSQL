@@ -3,13 +3,18 @@
  */
 package kcl.mdd.cw.sql.generator
 
+import kcl.mdd.cw.sql.simpleSQL.CREATE_DB
+import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE
+import kcl.mdd.cw.sql.simpleSQL.DELETE
+import kcl.mdd.cw.sql.simpleSQL.INSERT
+import kcl.mdd.cw.sql.simpleSQL.Model
+import kcl.mdd.cw.sql.simpleSQL.SELECT
+import kcl.mdd.cw.sql.simpleSQL.TYPE
+import kcl.mdd.cw.sql.simpleSQL.UPDATE
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import kcl.mdd.cw.sql.simpleSQL.Model
-import kcl.mdd.cw.sql.simpleSQL.Statement
-import kcl.mdd.cw.sql.simpleSQL.*
 
 /**
  * Generates code from your model files on save.
@@ -34,7 +39,6 @@ class SimpleSQLGenerator extends AbstractGenerator
 	def String doGenerate(Model m) '''
 		«FOR s : m.statements»
 			«generate(s)»
-			\n
 		«ENDFOR»
 	'''
 	
@@ -42,7 +46,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 	dispatch def generate(INSERT ct)
 	{
 		return '''
-		INSERT INTO «ct.table» (
+		INSERT INTO «ct.table.name» (
 		«FOR data : ct.data SEPARATOR ','»
 			«data»
 		«ENDFOR»
@@ -86,7 +90,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		return '''
 		CREATE TABLE «ct.name» (
 		«FOR col : ct.columns SEPARATOR ','»
-			«col.name» «col.type == 'string' ? 'VARCHAR(255)' : col.type»
+			«col.name» «convertToSQLType(col.type)»
 		«ENDFOR»
 		);
 		'''
@@ -96,4 +100,14 @@ class SimpleSQLGenerator extends AbstractGenerator
 	{
 		return '''CREATE DATABASE «cd.name»;'''
 	}	
+	
+	def String convertToSQLType(TYPE s)
+	{
+		switch s 
+		{
+			case TYPE.STRING : "VARCHAR(255)"
+			case TYPE.INT : "INTEGER"
+			case TYPE.DECIMAL : "DECIMAL"
+		}
+	}
 }
