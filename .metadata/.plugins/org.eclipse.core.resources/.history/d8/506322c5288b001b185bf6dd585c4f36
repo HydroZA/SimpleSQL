@@ -46,7 +46,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 	dispatch def generate(INSERT ct)
 	{
 		return '''
-		INSERT INTO «ct.table.name» VALUES (
+		INSERT INTO «ct.table.name» (
 		«FOR data : ct.data SEPARATOR ','»
 			«data»
 		«ENDFOR»
