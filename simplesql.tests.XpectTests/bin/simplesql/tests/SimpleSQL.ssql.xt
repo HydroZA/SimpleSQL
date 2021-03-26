@@ -8,7 +8,7 @@ price DECIMAL
 );
 INSERT INTO tblTest VALUES (
 "Apples",
-1.25
+"1.25"
 );
    ---
  */

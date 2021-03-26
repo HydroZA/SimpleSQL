@@ -9,4 +9,6 @@ Require-Bundle: org.eclipse.xpect.xtext.lib;bundle-version="0.2.0",
  kcl.mdd.cw.sql;bundle-version="1.0.0",
  kcl.mdd.cw.sql.tests;bundle-version="1.0.0",
  kcl.mdd.cw.sql.ui;bundle-version="1.0.0",
- kcl.mdd.cw.sql.ui.tests;bundle-version="1.0.0"
+ kcl.mdd.cw.sql.ui.tests;bundle-version="1.0.0",
+ org.eclipse.xpect.xtext.xbase.lib;bundle-version="0.2.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.20.0"
