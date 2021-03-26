@@ -39,6 +39,8 @@ class SimpleSQLGenerator extends AbstractGenerator
 	}
 	
 	def String doGenerate(Model m) '''
+	#!/bin/bash
+	sqlite3 «m.db.name».db
 		«FOR s : m.statements»
 			«generate(s)»
 		«ENDFOR»
@@ -47,7 +49,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 	{
 		return '''
 		ORDER BY «ct.table.name» 
-		«FOR col : ct.columns SEPARATOR ','»
+		«FOR col : ct. SEPARATOR ','»
 			«col.name» «convertToSQLType(col.type)»
 		«ENDFOR»
 		'''

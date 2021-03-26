@@ -78,23 +78,44 @@ ruleModel returns [EObject current=null]
 }:
 	(
 		(
-			{
-				newCompositeNode(grammarAccess.getModelAccess().getStatementsStatementParserRuleCall_0());
-			}
-			lv_statements_0_0=ruleStatement
-			{
-				if ($current==null) {
-					$current = createModelElementForParent(grammarAccess.getModelRule());
+			(
+				{
+					newCompositeNode(grammarAccess.getModelAccess().getDbCREATE_DBParserRuleCall_0_0());
 				}
-				add(
-					$current,
-					"statements",
-					lv_statements_0_0,
-					"kcl.mdd.cw.sql.SimpleSQL.Statement");
-				afterParserOrEnumRuleCall();
-			}
+				lv_db_0_0=ruleCREATE_DB
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getModelRule());
+					}
+					set(
+						$current,
+						"db",
+						lv_db_0_0,
+						"kcl.mdd.cw.sql.SimpleSQL.CREATE_DB");
+					afterParserOrEnumRuleCall();
+				}
+			)
 		)
-	)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getModelAccess().getStatementsStatementParserRuleCall_1_0());
+				}
+				lv_statements_1_0=ruleStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getModelRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_1_0,
+						"kcl.mdd.cw.sql.SimpleSQL.Statement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+	)
 ;
 
 // Entry rule entryRuleStatement
@@ -123,83 +144,74 @@ ruleStatement returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getCREATE_DBParserRuleCall_1());
+			newCompositeNode(grammarAccess.getStatementAccess().getCREATE_TABLEParserRuleCall_1());
 		}
-		this_CREATE_DB_1=ruleCREATE_DB
+		this_CREATE_TABLE_1=ruleCREATE_TABLE
 		{
-			$current = $this_CREATE_DB_1.current;
+			$current = $this_CREATE_TABLE_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getCREATE_TABLEParserRuleCall_2());
+			newCompositeNode(grammarAccess.getStatementAccess().getINSERTParserRuleCall_2());
 		}
-		this_CREATE_TABLE_2=ruleCREATE_TABLE
+		this_INSERT_2=ruleINSERT
 		{
-			$current = $this_CREATE_TABLE_2.current;
+			$current = $this_INSERT_2.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getINSERTParserRuleCall_3());
+			newCompositeNode(grammarAccess.getStatementAccess().getDELETEParserRuleCall_3());
 		}
-		this_INSERT_3=ruleINSERT
+		this_DELETE_3=ruleDELETE
 		{
-			$current = $this_INSERT_3.current;
+			$current = $this_DELETE_3.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getDELETEParserRuleCall_4());
+			newCompositeNode(grammarAccess.getStatementAccess().getUPDATEParserRuleCall_4());
 		}
-		this_DELETE_4=ruleDELETE
+		this_UPDATE_4=ruleUPDATE
 		{
-			$current = $this_DELETE_4.current;
+			$current = $this_UPDATE_4.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getUPDATEParserRuleCall_5());
+			newCompositeNode(grammarAccess.getStatementAccess().getINNERJOINParserRuleCall_5());
 		}
-		this_UPDATE_5=ruleUPDATE
+		this_INNERJOIN_5=ruleINNERJOIN
 		{
-			$current = $this_UPDATE_5.current;
+			$current = $this_INNERJOIN_5.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getINNERJOINParserRuleCall_6());
+			newCompositeNode(grammarAccess.getStatementAccess().getWHEREParserRuleCall_6());
 		}
-		this_INNERJOIN_6=ruleINNERJOIN
+		this_WHERE_6=ruleWHERE
 		{
-			$current = $this_INNERJOIN_6.current;
+			$current = $this_WHERE_6.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getWHEREParserRuleCall_7());
+			newCompositeNode(grammarAccess.getStatementAccess().getORDERBYParserRuleCall_7());
 		}
-		this_WHERE_7=ruleWHERE
+		this_ORDERBY_7=ruleORDERBY
 		{
-			$current = $this_WHERE_7.current;
+			$current = $this_ORDERBY_7.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getStatementAccess().getORDERBYParserRuleCall_8());
+			newCompositeNode(grammarAccess.getStatementAccess().getGROUPBYParserRuleCall_8());
 		}
-		this_ORDERBY_8=ruleORDERBY
+		this_GROUPBY_8=ruleGROUPBY
 		{
-			$current = $this_ORDERBY_8.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getStatementAccess().getGROUPBYParserRuleCall_9());
-		}
-		this_GROUPBY_9=ruleGROUPBY
-		{
-			$current = $this_GROUPBY_9.current;
+			$current = $this_GROUPBY_8.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -332,24 +344,26 @@ ruleORDERBY returns [EObject current=null]
 				}
 				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getORDERBYAccess().getTableCREATE_TABLECrossReference_2_0());
+					newLeafNode(otherlv_2, grammarAccess.getORDERBYAccess().getColCOLUMN_DEFCrossReference_2_0());
 				}
 			)
 		)
-		otherlv_3='where'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getORDERBYAccess().getWhereKeyword_3());
-		}
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getORDERBYRule());
-					}
+					newCompositeNode(grammarAccess.getORDERBYAccess().getTypeTYPEEnumRuleCall_3_0());
 				}
-				otherlv_4=RULE_ID
+				lv_type_3_0=ruleTYPE
 				{
-					newLeafNode(otherlv_4, grammarAccess.getORDERBYAccess().getColCOLUMN_DEFCrossReference_4_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getORDERBYRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_3_0,
+						"kcl.mdd.cw.sql.SimpleSQL.TYPE");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1128,6 +1142,22 @@ ruleTYPE returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getTYPEAccess().getDateEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_3, grammarAccess.getTYPEAccess().getDateEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='asc'
+			{
+				$current = grammarAccess.getTYPEAccess().getAscEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getTYPEAccess().getAscEnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5='desc'
+			{
+				$current = grammarAccess.getTYPEAccess().getDescEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getTYPEAccess().getDescEnumLiteralDeclaration_5());
 			}
 		)
 	)
