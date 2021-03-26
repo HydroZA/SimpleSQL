@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: XpectTests
+Bundle-SymbolicName: simplesql.tests.XpectTests
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: turtle.tests.XpectTests
+Bundle-RequiredExecutionEnvironment: JavaSE-14
+Require-Bundle: org.eclipse.xpect.xtext.lib;bundle-version="0.2.0",
+ kcl.mdd.cw.sql;bundle-version="1.0.0",
+ kcl.mdd.cw.sql.tests;bundle-version="1.0.0",
+ kcl.mdd.cw.sql.ui;bundle-version="1.0.0",
+ kcl.mdd.cw.sql.ui.tests;bundle-version="1.0.0"
