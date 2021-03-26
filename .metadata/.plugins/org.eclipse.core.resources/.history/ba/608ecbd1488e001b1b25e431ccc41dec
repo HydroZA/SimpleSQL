@@ -45,6 +45,15 @@ class SimpleSQLGenerator extends AbstractGenerator
 			«generate(s)»
 		«ENDFOR»
 	'''
+	dispatch def generate(ORDERBY ct)
+	{
+		return '''
+		ORDER BY
+		«FOR col : ct. SEPARATOR ','»
+			«col.name» «convertToSQLType(col.type)»
+		«ENDFOR»
+		'''
+	}
 	
 	// TODO: All values will have quotation marks, can we make it so only strings have quotation marks?
 	dispatch def generate(INSERT ct)
@@ -84,7 +93,6 @@ class SimpleSQLGenerator extends AbstractGenerator
 		return '''
 		SELECT «ct.name == 'all' ? '*' : ct.name»
 		FROM «ct.table»
-		// TODO: Order by code goes here
 		;
 		'''
 	}

@@ -12,7 +12,7 @@ Statement:
 ;
 
 GROUPBY:
-	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')'
+	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] ('where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')')?
 ;
 
 ORDERBY:
