@@ -15,7 +15,7 @@ GROUPBY:
 ;
 
 ORDERBY:
-	'order' 'by' table=[CREATE_TABLE] 'where' col=[COLUMN_DEF]
+	'order' 'by' col=[COLUMN_DEF] type=TYPE
 ;
 
 WHERE:
@@ -54,4 +54,4 @@ INSERT:
 	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
 ;
 
-enum TYPE: string | int | decimal | date;
+enum TYPE: string | int | decimal | date | asc | desc;
