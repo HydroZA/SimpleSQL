@@ -11,10 +11,12 @@ import kcl.mdd.cw.sql.simpleSQL.Model
 import kcl.mdd.cw.sql.simpleSQL.SELECT
 import kcl.mdd.cw.sql.simpleSQL.TYPE
 import kcl.mdd.cw.sql.simpleSQL.UPDATE
+import kcl.mdd.cw.sql.simpleSQL.ORDERBY
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+
 
 /**
  * Generates code from your model files on save.
@@ -41,7 +43,15 @@ class SimpleSQLGenerator extends AbstractGenerator
 			«generate(s)»
 		«ENDFOR»
 	'''
-	
+	dispatch def generate(ORDERBY ct)
+	{
+		return '''
+		ORDER BY «ct.table.name» 
+		«FOR col : ct.columns SEPARATOR ','»
+			«col.name» «convertToSQLType(col.type)»
+		«ENDFOR»
+		'''
+	}
 	
 	dispatch def generate(INSERT ct)
 	{
