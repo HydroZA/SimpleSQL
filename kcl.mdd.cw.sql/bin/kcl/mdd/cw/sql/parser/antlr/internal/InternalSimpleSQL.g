@@ -275,39 +275,41 @@ ruleGROUPBY returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_6='where'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getGROUPBYAccess().getWhereKeyword_6());
-		}
-		otherlv_7='order'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getGROUPBYAccess().getOrderKeyword_7());
-		}
-		otherlv_8='by'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getGROUPBYAccess().getByKeyword_8());
-		}
-		otherlv_9='('
-		{
-			newLeafNode(otherlv_9, grammarAccess.getGROUPBYAccess().getLeftParenthesisKeyword_9());
-		}
 		(
+			otherlv_6='where'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getGROUPBYAccess().getWhereKeyword_6_0());
+			}
+			otherlv_7='order'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getGROUPBYAccess().getOrderKeyword_6_1());
+			}
+			otherlv_8='by'
+			{
+				newLeafNode(otherlv_8, grammarAccess.getGROUPBYAccess().getByKeyword_6_2());
+			}
+			otherlv_9='('
+			{
+				newLeafNode(otherlv_9, grammarAccess.getGROUPBYAccess().getLeftParenthesisKeyword_6_3());
+			}
 			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getGROUPBYRule());
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getGROUPBYRule());
+						}
 					}
-				}
-				otherlv_10=RULE_ID
-				{
-					newLeafNode(otherlv_10, grammarAccess.getGROUPBYAccess().getColsCOLUMN_DEFCrossReference_10_0());
-				}
-			)
-		)+
-		otherlv_11=')'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getGROUPBYAccess().getRightParenthesisKeyword_11());
-		}
+					otherlv_10=RULE_ID
+					{
+						newLeafNode(otherlv_10, grammarAccess.getGROUPBYAccess().getColsCOLUMN_DEFCrossReference_6_4_0());
+					}
+				)
+			)+
+			otherlv_11=')'
+			{
+				newLeafNode(otherlv_11, grammarAccess.getGROUPBYAccess().getRightParenthesisKeyword_6_5());
+			}
+		)?
 	)
 ;
 
@@ -351,9 +353,9 @@ ruleORDERBY returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getORDERBYAccess().getTypeTYPEEnumRuleCall_3_0());
+					newCompositeNode(grammarAccess.getORDERBYAccess().getTypeORDEREnumRuleCall_3_0());
 				}
-				lv_type_3_0=ruleTYPE
+				lv_type_3_0=ruleORDER
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getORDERBYRule());
@@ -362,7 +364,7 @@ ruleORDERBY returns [EObject current=null]
 						$current,
 						"type",
 						lv_type_3_0,
-						"kcl.mdd.cw.sql.SimpleSQL.TYPE");
+						"kcl.mdd.cw.sql.SimpleSQL.ORDER");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1104,6 +1106,33 @@ ruleINSERT returns [EObject current=null]
 	)
 ;
 
+// Rule ORDER
+ruleORDER returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='asc'
+			{
+				$current = grammarAccess.getORDERAccess().getAscEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getORDERAccess().getAscEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='desc'
+			{
+				$current = grammarAccess.getORDERAccess().getDescEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getORDERAccess().getDescEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
 // Rule TYPE
 ruleTYPE returns [Enumerator current=null]
 @init {
@@ -1142,22 +1171,6 @@ ruleTYPE returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getTYPEAccess().getDateEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_3, grammarAccess.getTYPEAccess().getDateEnumLiteralDeclaration_3());
-			}
-		)
-		    |
-		(
-			enumLiteral_4='asc'
-			{
-				$current = grammarAccess.getTYPEAccess().getAscEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_4, grammarAccess.getTYPEAccess().getAscEnumLiteralDeclaration_4());
-			}
-		)
-		    |
-		(
-			enumLiteral_5='desc'
-			{
-				$current = grammarAccess.getTYPEAccess().getDescEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_5, grammarAccess.getTYPEAccess().getDescEnumLiteralDeclaration_5());
 			}
 		)
 	)

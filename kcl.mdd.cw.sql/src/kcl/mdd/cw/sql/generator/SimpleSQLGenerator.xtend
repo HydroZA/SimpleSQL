@@ -35,7 +35,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		
 	def deriveTargetFileNameFor(Model model, Resource resource) 
 	{
-		resource.URI.appendFileExtension('sql').lastSegment
+		resource.URI.appendFileExtension('sh').lastSegment
 	}
 	
 	def String doGenerate(Model m) '''

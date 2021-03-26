@@ -1,6 +1,8 @@
 // XPECT_SETUP simplesql.tests.XpectTests END_SETUP
 /*
    XPECT generated ---
+#!/bin/bash
+sqlite3 Test.db
 CREATE DATABASE Test;
 CREATE TABLE tblTest (
 product VARCHAR(255),
