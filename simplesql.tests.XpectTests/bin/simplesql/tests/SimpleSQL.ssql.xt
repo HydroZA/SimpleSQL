@@ -1,0 +1,24 @@
+// XPECT_SETUP simplesql.tests.XpectTests END_SETUP
+/*
+   XPECT generated ---
+CREATE DATABASE Test;
+CREATE TABLE tblTest (
+product VARCHAR(255),
+price DECIMAL
+);
+INSERT INTO tblTest VALUES (
+"Apples",
+1.25
+);
+   ---
+ */
+
+
+create new database Test
+
+create new table tblTest in Test with columns (
+	product with type string
+	price with type decimal
+)
+
+add entry to tblTest with data ("Apples" "1.25")

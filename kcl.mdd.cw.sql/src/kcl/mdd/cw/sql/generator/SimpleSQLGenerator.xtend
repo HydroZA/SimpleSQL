@@ -42,13 +42,13 @@ class SimpleSQLGenerator extends AbstractGenerator
 		«ENDFOR»
 	'''
 	
-	
+	// TODO: All values will have quotation marks, can we make it so only strings have quotation marks?
 	dispatch def generate(INSERT ct)
 	{
 		return '''
 		INSERT INTO «ct.table.name» VALUES (
 		«FOR data : ct.data SEPARATOR ','»
-			«data»
+			"«data»"
 		«ENDFOR»
 		);
 		'''
