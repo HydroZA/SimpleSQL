@@ -20,7 +20,7 @@ ORDERBY:
 ;
 
 WHERE:
-	'with' 'columns' '(' columns+=[COLUMN_DEF]+ ')'
+	'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
 ;
 
 INNERJOIN:
