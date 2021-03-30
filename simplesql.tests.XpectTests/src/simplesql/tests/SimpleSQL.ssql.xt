@@ -3,7 +3,6 @@
    XPECT generated ---
 #!/bin/bash
 sqlite3 Test.db
-CREATE DATABASE Test;
 CREATE TABLE tblTest (
 product VARCHAR(255),
 price DECIMAL
@@ -23,4 +22,6 @@ create new table tblTest in Test with columns (
 	price with type decimal
 )
 
-add entry to tblTest with data ("Apples" 1.25)
+add entry to tblTest with data ("Apples" "1.25")
+
+show all in tblTest where product is "Apples"

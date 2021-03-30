@@ -20,7 +20,7 @@ ORDERBY:
 ;
 
 WHERE:
-	'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
+	'where' column=[COLUMN_DEF] 'is' expected=STRING
 ;
 
 INNERJOIN:
@@ -36,7 +36,7 @@ UPDATE:
 ;
 
 DELETE:
-	'delete' 'entry' 'from' table=[CREATE_TABLE] 'where' x=STRING
+	'delete' 'from' table=[CREATE_TABLE] (where=WHERE)?
 ;
 
 CREATE_DB:
