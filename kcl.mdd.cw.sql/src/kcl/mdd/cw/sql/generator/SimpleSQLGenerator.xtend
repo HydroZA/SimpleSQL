@@ -40,21 +40,21 @@ class SimpleSQLGenerator extends AbstractGenerator
 	
 	def String doGenerate(Model m) '''
 	#!/bin/bash
-	sqlite3 «m.db.name».db
+	sqlite3 «m.db.name».db "
 		«FOR s : m.statements»
-			«generate(s)»
+			«generate(s)»;
 		«ENDFOR»
+		"
 	'''
 	
-	// TODO: All values will have quotation marks, can we make it so only strings have quotation marks?
 	dispatch def generate(INSERT ct)
 	{
 		return '''
 		INSERT INTO «ct.table.name» VALUES (
 		«FOR data : ct.data SEPARATOR ','»
-			"«data»"
+			\"«data»\"
 		«ENDFOR»
-		);
+		)
 		'''
 	}
 	
@@ -82,10 +82,14 @@ class SimpleSQLGenerator extends AbstractGenerator
 	dispatch def generate(SELECT ct)
 	{
 		return '''
-		SELECT «ct.name == 'all' ? '*' : ct.name»
+		SELECT «ct.name === null ? '*' : ct.name»
 		FROM «ct.table»
-		«if (ct.where !== null)»
-		;
+		«IF (ct.where !== null)»
+			WHERE «ct.where.column»=«ct.where.expected»
+		«ENDIF»
+		«IF (ct.ob !== null)»
+			ORDER BY «ct.ob.col» «ct.ob.type»
+		«ENDIF»
 		'''
 	}
 	
@@ -97,14 +101,9 @@ class SimpleSQLGenerator extends AbstractGenerator
 		«FOR col : ct.columns SEPARATOR ','»
 			«col.name» «convertToSQLType(col.type)»
 		«ENDFOR»
-		);
+		)
 		'''
 	}
-	
-	dispatch def generate(CREATE_DB cd)
-	{
-		return '''CREATE DATABASE «cd.name»;'''
-	}	
 	
 	def String convertToSQLType(TYPE s)
 	{

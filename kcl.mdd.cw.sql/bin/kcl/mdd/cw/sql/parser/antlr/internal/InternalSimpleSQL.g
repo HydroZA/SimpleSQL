@@ -365,15 +365,28 @@ ruleWHERE returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getWHEREAccess().getWhereKeyword_0());
 		}
-		otherlv_1='table'
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getWHERERule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getWHEREAccess().getColumnCOLUMN_DEFCrossReference_1_0());
+				}
+			)
+		)
+		otherlv_2='is'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getWHEREAccess().getTableKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getWHEREAccess().getIsKeyword_2());
 		}
 		(
 			(
-				lv_name_2_0=RULE_ID
+				lv_expected_3_0=RULE_STRING
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getWHEREAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_expected_3_0, grammarAccess.getWHEREAccess().getExpectedSTRINGTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -381,64 +394,12 @@ ruleWHERE returns [EObject current=null]
 					}
 					setWithLastConsumed(
 						$current,
-						"name",
-						lv_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"expected",
+						lv_expected_3_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
-		otherlv_3='in'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getWHEREAccess().getInKeyword_3());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getWHERERule());
-					}
-				}
-				otherlv_4=RULE_ID
-				{
-					newLeafNode(otherlv_4, grammarAccess.getWHEREAccess().getDbCREATE_DBCrossReference_4_0());
-				}
-			)
-		)
-		otherlv_5='where'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getWHEREAccess().getWhereKeyword_5());
-		}
-		otherlv_6='columns'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getWHEREAccess().getColumnsKeyword_6());
-		}
-		otherlv_7='('
-		{
-			newLeafNode(otherlv_7, grammarAccess.getWHEREAccess().getLeftParenthesisKeyword_7());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getWHEREAccess().getColumnsCOLUMN_DEFParserRuleCall_8_0());
-				}
-				lv_columns_8_0=ruleCOLUMN_DEF
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getWHERERule());
-					}
-					add(
-						$current,
-						"columns",
-						lv_columns_8_0,
-						"kcl.mdd.cw.sql.SimpleSQL.COLUMN_DEF");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)+
-		otherlv_9=')'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getWHEREAccess().getRightParenthesisKeyword_9());
-		}
 	)
 ;
 
