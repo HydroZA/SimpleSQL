@@ -10,7 +10,7 @@ price DECIMAL
 );
 INSERT INTO tblTest VALUES (
 "Apples",
-"1.25"
+1.25
 );
    ---
  */
@@ -23,4 +23,4 @@ create new table tblTest in Test with columns (
 	price with type decimal
 )
 
-add entry to tblTest with data ("Apples" "1.25")
+add entry to tblTest with data ("Apples" 1.25)

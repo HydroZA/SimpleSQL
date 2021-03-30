@@ -187,33 +187,6 @@ ruleStatement returns [EObject current=null]
 			$current = $this_INNERJOIN_5.current;
 			afterParserOrEnumRuleCall();
 		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getStatementAccess().getWHEREParserRuleCall_6());
-		}
-		this_WHERE_6=ruleWHERE
-		{
-			$current = $this_WHERE_6.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getStatementAccess().getORDERBYParserRuleCall_7());
-		}
-		this_ORDERBY_7=ruleORDERBY
-		{
-			$current = $this_ORDERBY_7.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getStatementAccess().getGROUPBYParserRuleCall_8());
-		}
-		this_GROUPBY_8=ruleGROUPBY
-		{
-			$current = $this_GROUPBY_8.current;
-			afterParserOrEnumRuleCall();
-		}
 	)
 ;
 
@@ -309,7 +282,7 @@ ruleGROUPBY returns [EObject current=null]
 			{
 				newLeafNode(otherlv_11, grammarAccess.getGROUPBYAccess().getRightParenthesisKeyword_6_5());
 			}
-		)?
+		)
 	)
 ;
 
@@ -392,19 +365,15 @@ ruleWHERE returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getWHEREAccess().getWhereKeyword_0());
 		}
-		otherlv_1='to'
+		otherlv_1='table'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getWHEREAccess().getToKeyword_1());
-		}
-		otherlv_2='table'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getWHEREAccess().getTableKeyword_2());
+			newLeafNode(otherlv_1, grammarAccess.getWHEREAccess().getTableKeyword_1());
 		}
 		(
 			(
-				lv_name_3_0=RULE_ID
+				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_3_0, grammarAccess.getWHEREAccess().getNameIDTerminalRuleCall_3_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getWHEREAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -413,14 +382,14 @@ ruleWHERE returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_3_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_4='in'
+		otherlv_3='in'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getWHEREAccess().getInKeyword_4());
+			newLeafNode(otherlv_3, grammarAccess.getWHEREAccess().getInKeyword_3());
 		}
 		(
 			(
@@ -429,30 +398,30 @@ ruleWHERE returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getWHERERule());
 					}
 				}
-				otherlv_5=RULE_ID
+				otherlv_4=RULE_ID
 				{
-					newLeafNode(otherlv_5, grammarAccess.getWHEREAccess().getDbCREATE_DBCrossReference_5_0());
+					newLeafNode(otherlv_4, grammarAccess.getWHEREAccess().getDbCREATE_DBCrossReference_4_0());
 				}
 			)
 		)
-		otherlv_6='where'
+		otherlv_5='where'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getWHEREAccess().getWhereKeyword_6());
+			newLeafNode(otherlv_5, grammarAccess.getWHEREAccess().getWhereKeyword_5());
 		}
-		otherlv_7='columns'
+		otherlv_6='columns'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getWHEREAccess().getColumnsKeyword_7());
+			newLeafNode(otherlv_6, grammarAccess.getWHEREAccess().getColumnsKeyword_6());
 		}
-		otherlv_8='('
+		otherlv_7='('
 		{
-			newLeafNode(otherlv_8, grammarAccess.getWHEREAccess().getLeftParenthesisKeyword_8());
+			newLeafNode(otherlv_7, grammarAccess.getWHEREAccess().getLeftParenthesisKeyword_7());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getWHEREAccess().getColumnsCOLUMN_DEFParserRuleCall_9_0());
+					newCompositeNode(grammarAccess.getWHEREAccess().getColumnsCOLUMN_DEFParserRuleCall_8_0());
 				}
-				lv_columns_9_0=ruleCOLUMN_DEF
+				lv_columns_8_0=ruleCOLUMN_DEF
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getWHERERule());
@@ -460,15 +429,15 @@ ruleWHERE returns [EObject current=null]
 					add(
 						$current,
 						"columns",
-						lv_columns_9_0,
+						lv_columns_8_0,
 						"kcl.mdd.cw.sql.SimpleSQL.COLUMN_DEF");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
-		otherlv_10=')'
+		otherlv_9=')'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getWHEREAccess().getRightParenthesisKeyword_10());
+			newLeafNode(otherlv_9, grammarAccess.getWHEREAccess().getRightParenthesisKeyword_9());
 		}
 	)
 ;
@@ -638,6 +607,63 @@ ruleSELECT returns [EObject current=null]
 				}
 			)
 		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSELECTAccess().getWhereWHEREParserRuleCall_4_0());
+				}
+				lv_where_5_0=ruleWHERE
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSELECTRule());
+					}
+					set(
+						$current,
+						"where",
+						lv_where_5_0,
+						"kcl.mdd.cw.sql.SimpleSQL.WHERE");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSELECTAccess().getGbGROUPBYParserRuleCall_5_0());
+				}
+				lv_gb_6_0=ruleGROUPBY
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSELECTRule());
+					}
+					set(
+						$current,
+						"gb",
+						lv_gb_6_0,
+						"kcl.mdd.cw.sql.SimpleSQL.GROUPBY");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSELECTAccess().getObORDERBYParserRuleCall_6_0());
+				}
+				lv_ob_7_0=ruleORDERBY
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSELECTRule());
+					}
+					set(
+						$current,
+						"ob",
+						lv_ob_7_0,
+						"kcl.mdd.cw.sql.SimpleSQL.ORDERBY");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
 	)
 ;
 

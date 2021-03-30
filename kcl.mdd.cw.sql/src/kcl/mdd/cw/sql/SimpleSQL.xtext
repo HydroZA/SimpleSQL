@@ -8,11 +8,11 @@ Model:
 ;
 	
 Statement:
-	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN | WHERE | ORDERBY | GROUPBY
+	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN 
 ;
 
 GROUPBY:
-	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] ('where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')'
+	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] ('where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')')
 ;
 
 ORDERBY:
@@ -20,7 +20,7 @@ ORDERBY:
 ;
 
 WHERE:
-	'where' 'to' 'table' name=ID 'in' db=[CREATE_DB] 'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
+	'where' 'table' name=ID 'in' db=[CREATE_DB] 'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
 ;
 
 INNERJOIN:
@@ -28,7 +28,7 @@ INNERJOIN:
 ;
 
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
 ;
 
 UPDATE:
