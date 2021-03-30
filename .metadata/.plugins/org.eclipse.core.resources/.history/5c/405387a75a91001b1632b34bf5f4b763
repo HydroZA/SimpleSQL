@@ -84,7 +84,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		return '''
 		SELECT «ct.name == 'all' ? '*' : ct.name»
 		FROM «ct.table»
-		«if (ct.where !== null)»
+		// TODO: Order by code goes here
 		;
 		'''
 	}

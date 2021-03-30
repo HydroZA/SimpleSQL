@@ -20,7 +20,7 @@ ORDERBY:
 ;
 
 WHERE:
-	'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
+	'where' 'table' name=ID 'in' db=[CREATE_DB] 'where' 'columns' '(' columns+=COLUMN_DEF+ ')'
 ;
 
 INNERJOIN:
