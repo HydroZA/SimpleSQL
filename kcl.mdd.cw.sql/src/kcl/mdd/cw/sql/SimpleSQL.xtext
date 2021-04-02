@@ -55,7 +55,7 @@ INSERT:
 	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
 ;
 
-enum ORDER: asc | desc;
+enum ORDER: ascending | descending;
 enum TYPE: string | int | decimal | date;
 
 
