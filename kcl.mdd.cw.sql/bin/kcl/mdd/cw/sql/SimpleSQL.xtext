@@ -7,42 +7,52 @@ Model:
 	statements+=Statement*
 ;
 	
+// Top level statements
 Statement:
 	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE 
 ;
 
+// GROUPBY RULE which selects the column from the table created 
 GROUPBY:
 	'group' 'by' cols+=[COLUMN_DEF]+
 ;
 
+// ORDERBY RULE which selects the column from the table created using the enum type order, whether it's ascending or descending order 
 ORDERBY:
 	'order' 'by' col=[COLUMN_DEF] type=ORDER
 ;
 
+// WHERE RULE to locate a specified column
 WHERE:
 	'where' column=ID 'is' expected=STRING
 ;
 
+// SELECT RULE which inherits *where *groupby *orderby and *innerjoin statement 
 SELECT:
 	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
 ;
 
+// UPDATE RULE that will locate the column and data that will need to be modified in the table 
 UPDATE:
 	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=STRING+ ')'
 ;
 
+// DELETE RULE where it will delete an existing record in the table 
 DELETE:
 	'delete' 'from' table=[CREATE_TABLE] (where=WHERE)?
 ;
 
+// CREATE_RULE to create new database 
 CREATE_DB:
 	'create' 'new' 'database' name=ID
 ;
 
+// CREATE_TABLE RULE that will allow to implement columns within the database  
 CREATE_TABLE:
 	'create' 'new' 'table' name=ID 'in' db=[CREATE_DB] 'with' 'columns' '(' columns+=COLUMN_DEF+ ')'
 ;
 
+// INSERT RULE that will allow to add rows to the table with the string type for the data
 COLUMN_DEF:
 	name=ID 'with' 'type' type=TYPE
 ;
