@@ -2,17 +2,25 @@
 /*
    XPECT generated ---
 #!/bin/bash
-sqlite3 Test.db
-CREATE TABLE tblTest (
-product VARCHAR(255),
-price DECIMAL
-);
-INSERT INTO tblTest VALUES (
-"Apples",
-1.25
-);
+sqlite3 Test.db "
+	CREATE TABLE tblTest (
+	product VARCHAR(255),
+	price DECIMAL
+	)
+	;
+	INSERT INTO tblTest VALUES (
+	\"Apples\",
+	\"1.25\"
+	)
+	;
+	SELECT *
+	FROM tblTest
+	WHERE product=\"Apples\"
+	;
+	"
+
    ---
- */
+*/
 
 
 create new database Test
@@ -23,5 +31,4 @@ create new table tblTest in Test with columns (
 )
 
 add entry to tblTest with data ("Apples" "1.25")
-
-show all in tblTest where product is "Apples" 
+show all in tblTest where product is "Apples"

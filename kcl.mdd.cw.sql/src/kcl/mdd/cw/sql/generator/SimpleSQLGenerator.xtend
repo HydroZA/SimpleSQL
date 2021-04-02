@@ -85,7 +85,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		SELECT «ct.name === null ? '*' : ct.name»
 		FROM «ct.table»
 		«IF (ct.where !== null)»
-			WHERE «ct.where.column.toString()»=«ct.where.expected»
+			WHERE «ct.where.column»=\"«ct.where.expected»\"
 		«ENDIF»
 		«IF (ct.ob !== null)»
 			ORDER BY «ct.ob.col» «ct.ob.type»

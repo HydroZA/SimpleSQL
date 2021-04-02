@@ -358,14 +358,19 @@ ruleWHERE returns [EObject current=null]
 		}
 		(
 			(
+				lv_column_1_0=RULE_ID
+				{
+					newLeafNode(lv_column_1_0, grammarAccess.getWHEREAccess().getColumnIDTerminalRuleCall_1_0());
+				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getWHERERule());
 					}
-				}
-				otherlv_1=RULE_ID
-				{
-					newLeafNode(otherlv_1, grammarAccess.getWHEREAccess().getColumnCOLUMN_DEFCrossReference_1_0());
+					setWithLastConsumed(
+						$current,
+						"column",
+						lv_column_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
