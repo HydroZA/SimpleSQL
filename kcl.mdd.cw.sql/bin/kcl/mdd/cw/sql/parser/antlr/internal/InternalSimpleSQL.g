@@ -197,13 +197,13 @@ ruleGROUPBY returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='select'
+		otherlv_0='group'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getGROUPBYAccess().getSelectKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getGROUPBYAccess().getGroupKeyword_0());
 		}
-		otherlv_1='('
+		otherlv_1='by'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getGROUPBYAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getGROUPBYAccess().getByKeyword_1());
 		}
 		(
 			(
@@ -218,62 +218,6 @@ ruleGROUPBY returns [EObject current=null]
 				}
 			)
 		)+
-		otherlv_3=')'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getGROUPBYAccess().getRightParenthesisKeyword_3());
-		}
-		otherlv_4='from'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getGROUPBYAccess().getFromKeyword_4());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getGROUPBYRule());
-					}
-				}
-				otherlv_5=RULE_ID
-				{
-					newLeafNode(otherlv_5, grammarAccess.getGROUPBYAccess().getTableCREATE_TABLECrossReference_5_0());
-				}
-			)
-		)
-		(
-			otherlv_6='where'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getGROUPBYAccess().getWhereKeyword_6_0());
-			}
-			otherlv_7='order'
-			{
-				newLeafNode(otherlv_7, grammarAccess.getGROUPBYAccess().getOrderKeyword_6_1());
-			}
-			otherlv_8='by'
-			{
-				newLeafNode(otherlv_8, grammarAccess.getGROUPBYAccess().getByKeyword_6_2());
-			}
-			otherlv_9='('
-			{
-				newLeafNode(otherlv_9, grammarAccess.getGROUPBYAccess().getLeftParenthesisKeyword_6_3());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getGROUPBYRule());
-						}
-					}
-					otherlv_10=RULE_ID
-					{
-						newLeafNode(otherlv_10, grammarAccess.getGROUPBYAccess().getColsCOLUMN_DEFCrossReference_6_4_0());
-					}
-				)
-			)+
-			otherlv_11=')'
-			{
-				newLeafNode(otherlv_11, grammarAccess.getGROUPBYAccess().getRightParenthesisKeyword_6_5());
-			}
-		)
 	)
 ;
 
@@ -393,50 +337,6 @@ ruleWHERE returns [EObject current=null]
 						"expected",
 						lv_expected_3_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
-				}
-			)
-		)
-	)
-;
-
-// Entry rule entryRuleINNERJOIN
-entryRuleINNERJOIN returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getINNERJOINRule()); }
-	iv_ruleINNERJOIN=ruleINNERJOIN
-	{ $current=$iv_ruleINNERJOIN.current; }
-	EOF;
-
-// Rule INNERJOIN
-ruleINNERJOIN returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='inner'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getINNERJOINAccess().getInnerKeyword_0());
-		}
-		otherlv_1='join'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getINNERJOINAccess().getJoinKeyword_1());
-		}
-		otherlv_2='on'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getINNERJOINAccess().getOnKeyword_2());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getINNERJOINRule());
-					}
-				}
-				otherlv_3=RULE_ID
-				{
-					newLeafNode(otherlv_3, grammarAccess.getINNERJOINAccess().getColsCOLUMN_DEFCrossReference_3_0());
 				}
 			)
 		)
@@ -563,25 +463,6 @@ ruleSELECT returns [EObject current=null]
 						"ob",
 						lv_ob_7_0,
 						"kcl.mdd.cw.sql.SimpleSQL.ORDERBY");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getSELECTAccess().getIjINNERJOINParserRuleCall_7_0());
-				}
-				lv_ij_8_0=ruleINNERJOIN
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSELECTRule());
-					}
-					set(
-						$current,
-						"ij",
-						lv_ij_8_0,
-						"kcl.mdd.cw.sql.SimpleSQL.INNERJOIN");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -1057,18 +938,18 @@ ruleORDER returns [Enumerator current=null]
 }:
 	(
 		(
-			enumLiteral_0='asc'
+			enumLiteral_0='ascending'
 			{
-				$current = grammarAccess.getORDERAccess().getAscEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getORDERAccess().getAscEnumLiteralDeclaration_0());
+				$current = grammarAccess.getORDERAccess().getAscendingEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getORDERAccess().getAscendingEnumLiteralDeclaration_0());
 			}
 		)
 		    |
 		(
-			enumLiteral_1='desc'
+			enumLiteral_1='descending'
 			{
-				$current = grammarAccess.getORDERAccess().getDescEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getORDERAccess().getDescEnumLiteralDeclaration_1());
+				$current = grammarAccess.getORDERAccess().getDescendingEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getORDERAccess().getDescendingEnumLiteralDeclaration_1());
 			}
 		)
 	)

@@ -23,8 +23,12 @@ WHERE:
 	'where' column=ID 'is' expected=STRING
 ;
 
+INNERJOIN:
+	'double' 'match' tbl=[CREATE_TABLE] 
+;
+
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)? (ij=INNERJOIN)?
 ;
 
 UPDATE:
