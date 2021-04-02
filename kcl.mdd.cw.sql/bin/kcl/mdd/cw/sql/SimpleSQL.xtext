@@ -6,43 +6,53 @@ Model:
 	db = CREATE_DB
 	statements+=Statement*
 ;
-	
+
+//Implementation of the parser rules 
 Statement:
 	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN 
 ;
 
+// GROUPBY RULE which selects the column from the table created 
 GROUPBY:
 	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] ('where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')')
 ;
 
+// ORDERBY RULE which selects the column from the table created using the enum type order, whether it's ascending or descending order 
 ORDERBY:
 	'order' 'by' col=[COLUMN_DEF] type=ORDER
 ;
 
+// WHERE RULE to locate a specified column
 WHERE:
 	'where' column=[COLUMN_DEF] 'is' expected=STRING
 ;
 
+// INNERJOIN RULE to combine column values of two tables 
 INNERJOIN:
-	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' '(' cols+=[COLUMN_DEF]+ ')'
+	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' cols+=[COLUMN_DEF] type=JOIN
 ;
 
+// SELECT RULE which inherits *where *groupby *orderby and *innerjoin statement 
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)? (ij=JOIN)?
 ;
 
+// UPDATE RULE that will locate the column and data that will need to be modified in the table 
 UPDATE:
 	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=STRING+ ')'
 ;
 
+// DELETE RULE where it will delete an existing record in the table 
 DELETE:
 	'delete' 'from' table=[CREATE_TABLE] (where=WHERE)?
 ;
 
+// CREATE_RULE to create new database 
 CREATE_DB:
 	'create' 'new' 'database' name=ID
 ;
 
+// CREATE_TABLE RULE that will allow to implement columns within the database  
 CREATE_TABLE:
 	'create' 'new' 'table' name=ID 'in' db=[CREATE_DB] 'with' 'columns' '(' columns+=COLUMN_DEF+ ')'
 ;
@@ -51,10 +61,13 @@ COLUMN_DEF:
 	name=ID 'with' 'type' type=TYPE
 ;
 
+// INSERT RULE that will allow to add rows to the table with the string type for the data
 INSERT:
 	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
 ;
 
+// read only variable for JOIN,ORDER and TYPE 
+enum JOIN: join;
 enum ORDER: asc | desc;
 enum TYPE: string | int | decimal | date;
 
