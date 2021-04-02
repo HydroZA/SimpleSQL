@@ -24,11 +24,11 @@ WHERE:
 ;
 
 INNERJOIN:
-	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' '(' cols+=[COLUMN_DEF]+ ')'
+	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' cols+=[COLUMN_DEF] type=JOIN
 ;
 
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)? (ij=JOIN)?
 ;
 
 UPDATE:
@@ -55,6 +55,7 @@ INSERT:
 	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
 ;
 
+enum JOIN: join;
 enum ORDER: asc | desc;
 enum TYPE: string | int | decimal | date;
 
