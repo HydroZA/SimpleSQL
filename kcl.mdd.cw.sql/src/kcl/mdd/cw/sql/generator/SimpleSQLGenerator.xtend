@@ -44,6 +44,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		"
 	'''
 	
+	// Generate INSERT query 
 	dispatch def generate(INSERT ct)
 	{
 		return '''
@@ -55,6 +56,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		'''
 	}
 	
+	// Generate DELETE query
 	dispatch def generate(DELETE ct)
 	{
 		return '''
@@ -65,6 +67,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		'''
 	}
 	
+	// Generate UPDATE query
 	dispatch def generate(UPDATE ct)
 	{
 		return '''
@@ -76,7 +79,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		'''
 	}
 	
-	
+	// Generate SELECT query with the option to use WHERE,ORDER BY and GROUP BY
 	dispatch def generate(SELECT ct)
 	{
 		return '''
@@ -94,7 +97,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		'''
 	}
 	
-	
+	// Generate to create table 
 	dispatch def generate(CREATE_TABLE ct)
 	{
 		return '''
