@@ -3,7 +3,6 @@
  */
 package kcl.mdd.cw.sql.generator
 
-import kcl.mdd.cw.sql.simpleSQL.CREATE_DB
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE
 import kcl.mdd.cw.sql.simpleSQL.DELETE
 import kcl.mdd.cw.sql.simpleSQL.INSERT
@@ -11,12 +10,10 @@ import kcl.mdd.cw.sql.simpleSQL.Model
 import kcl.mdd.cw.sql.simpleSQL.SELECT
 import kcl.mdd.cw.sql.simpleSQL.TYPE
 import kcl.mdd.cw.sql.simpleSQL.UPDATE
-import kcl.mdd.cw.sql.simpleSQL.ORDERBY
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-
 
 /**
  * Generates code from your model files on save.
@@ -58,12 +55,13 @@ class SimpleSQLGenerator extends AbstractGenerator
 		'''
 	}
 	
-	
-	// TODO: Update to allow only deleting single rows
 	dispatch def generate(DELETE ct)
 	{
 		return '''
 		DELETE FROM «ct.table»
+		«IF (ct.where !== null)»
+			WHERE «ct.where.column»=«ct.where.expected»
+		«ENDIF»
 		'''
 	}
 	
@@ -85,10 +83,13 @@ class SimpleSQLGenerator extends AbstractGenerator
 		SELECT «ct.name === null ? '*' : ct.name»
 		FROM «ct.table»
 		«IF (ct.where !== null)»
-			WHERE «ct.where.column»=«ct.where.expected»
+			WHERE «ct.where.column»=\"«ct.where.expected»\"
 		«ENDIF»
 		«IF (ct.ob !== null)»
 			ORDER BY «ct.ob.col» «ct.ob.type»
+		«ENDIF»
+		«IF (ct.gb !== null)»
+			GROUP BY «FOR col : ct.gb.cols SEPARATOR ','»«col.name»«ENDFOR»
 		«ENDIF»
 		'''
 	}

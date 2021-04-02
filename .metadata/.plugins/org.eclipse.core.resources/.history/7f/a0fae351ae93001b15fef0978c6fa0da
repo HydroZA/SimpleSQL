@@ -1,0 +1,5 @@
+package kcl.mdd.cw.sql.validation
+
+class SimpleSqlValidator extends Abstrct{
+	
+}

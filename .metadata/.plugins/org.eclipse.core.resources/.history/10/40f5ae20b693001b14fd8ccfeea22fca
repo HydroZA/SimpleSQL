@@ -1,0 +1,62 @@
+grammar kcl.mdd.cw.sql.SimpleSQL with org.eclipse.xtext.common.Terminals
+
+generate simpleSQL "http://www.mdd.kcl/cw/sql/SimpleSQL"
+
+Model:
+	db = CREATE_DB
+	statements+=Statement*
+;
+	
+Statement:
+	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE 
+;
+
+GROUPBY:
+	'group' 'by' cols+=[COLUMN_DEF]+
+;
+
+ORDERBY:
+	'order' 'by' col=[COLUMN_DEF] type=ORDER
+;
+
+WHERE:
+	'where' column=[COLUMN_DEF] 'is' expected=STRING
+;
+
+INNERJOIN:
+	'inner' 'join' 'on' cols+=[COLUMN_DEF]
+;
+
+SELECT:
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)? (ij=INNERJOIN)?
+;
+
+UPDATE:
+	'update' 'entry' 'in' table=[CREATE_TABLE] 'on' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'with' 'data' '(' data+=STRING+ ')'
+;
+
+DELETE:
+	'delete' 'from' table=[CREATE_TABLE] (where=WHERE)?
+;
+
+CREATE_DB:
+	'create' 'new' 'database' name=ID
+;
+
+CREATE_TABLE:
+	'create' 'new' 'table' name=ID 'in' db=[CREATE_DB] 'with' 'columns' '(' columns+=COLUMN_DEF+ ')'
+;
+
+COLUMN_DEF:
+	name=ID 'with' 'type' type=TYPE
+;
+
+INSERT:
+	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
+;
+
+enum ORDER: asc | desc;
+enum TYPE: string | int | decimal | date;
+
+
+

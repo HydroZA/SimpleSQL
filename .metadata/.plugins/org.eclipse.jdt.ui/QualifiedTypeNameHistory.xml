@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="kcl.mdd.cw.sql.simpleSQL.INSERT"/>
+    <fullyQualifiedTypeName name="org.eclipse.xtext.validation.Check"/>
+</qualifiedTypeNameHistroy>
