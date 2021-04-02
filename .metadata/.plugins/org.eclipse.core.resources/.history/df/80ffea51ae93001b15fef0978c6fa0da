@@ -1,0 +1,5 @@
+package kcl.mdd.cw.sql.validation;
+
+@SuppressWarnings("all")
+public class SimpleSqlValidator /* implements Abstrct  */{
+}
