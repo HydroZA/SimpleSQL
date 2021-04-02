@@ -8,7 +8,7 @@ Model:
 ;
 	
 Statement:
-	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN 
+	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE 
 ;
 
 GROUPBY:
@@ -24,11 +24,11 @@ WHERE:
 ;
 
 INNERJOIN:
-	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' '(' cols+=[COLUMN_DEF]+ ')'
+	'inner' 'join' 'on' cols+=[COLUMN_DEF]
 ;
 
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)? (ij=INNERJOIN)?
 ;
 
 UPDATE:

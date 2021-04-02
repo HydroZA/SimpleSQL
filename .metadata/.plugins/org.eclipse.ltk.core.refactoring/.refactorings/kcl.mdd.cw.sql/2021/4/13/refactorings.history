@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;kcl.mdd.cw.sql/src/kcl/mdd/cw/sql/validation/SimpleSqlValidator.xtend&apos; to &apos;SimpleSQLValidator.xtend&apos;" description="Rename resource &apos;SimpleSqlValidator.xtend&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/kcl/mdd/cw/sql/validation/SimpleSqlValidator.xtend" name="SimpleSQLValidator.xtend" stamp="1617366247302" updateReferences="true"/>
+</session>
