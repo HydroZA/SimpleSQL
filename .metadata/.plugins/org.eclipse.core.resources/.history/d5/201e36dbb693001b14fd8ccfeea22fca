@@ -65,7 +65,7 @@ class SimpleSQLGenerator extends AbstractGenerator
 		return '''
 		DELETE FROM «ct.table»
 		«IF (ct.where !== null)»
-			WHERE «ct.where.column»=«ct.where.expected»
+			WHERE «ct.where.column»
 		«ENDIF»
 		'''
 	}
