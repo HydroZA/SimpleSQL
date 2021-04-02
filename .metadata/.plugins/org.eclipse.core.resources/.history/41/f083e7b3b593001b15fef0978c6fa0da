@@ -12,7 +12,7 @@ Statement:
 ;
 
 GROUPBY:
-	'group' 'by' cols+=[COLUMN_DEF]+
+	'group' 'by' '(' cols+=[COLUMN_DEF]+ ')'
 ;
 
 ORDERBY:

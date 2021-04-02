@@ -12,7 +12,7 @@ Statement:
 ;
 
 GROUPBY:
-	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] ('where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')')
+	'group' 'by' cols+=[COLUMN_DEF]+
 ;
 
 ORDERBY:
@@ -20,7 +20,7 @@ ORDERBY:
 ;
 
 WHERE:
-	'where' column=ID 'is' expected=STRING
+	'where' column=[COLUMN_DEF] 'is' expected=STRING
 ;
 
 INNERJOIN:
