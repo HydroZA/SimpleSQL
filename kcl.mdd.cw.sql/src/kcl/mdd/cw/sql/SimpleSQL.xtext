@@ -9,12 +9,12 @@ Model:
 
 //Implementation of the parser rules 
 Statement:
-	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE 
+	SELECT | CREATE_TABLE | INSERT | DELETE | UPDATE | INNERJOIN 
 ;
 
 // GROUPBY RULE which selects the column from the table created 
 GROUPBY:
-	'group' 'by' cols+=[COLUMN_DEF]+
+	'select' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] ('where' 'order' 'by' '(' cols+=[COLUMN_DEF]+ ')')
 ;
 
 // ORDERBY RULE which selects the column from the table created using the enum type order, whether it's ascending or descending order 
@@ -24,21 +24,17 @@ ORDERBY:
 
 // WHERE RULE to locate a specified column
 WHERE:
-<<<<<<< HEAD
 	'where' column=[COLUMN_DEF] 'is' expected=STRING
 ;
 
 // INNERJOIN RULE to combine column values of two tables 
 INNERJOIN:
 	'select' 'columns' '(' cols+=[COLUMN_DEF]+ ')' 'from' table=[CREATE_TABLE] 'inner' 'join' 'on' cols+=[COLUMN_DEF] type=JOIN
-=======
-	'where' column=ID 'is' expected=STRING
->>>>>>> d0025eec8cff5643ca49ac970ed8c5bfc736e4e5
 ;
 
 // SELECT RULE which inherits *where *groupby *orderby and *innerjoin statement 
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
+	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)? (ij=JOIN)?
 ;
 
 // UPDATE RULE that will locate the column and data that will need to be modified in the table 
@@ -70,13 +66,9 @@ INSERT:
 	'add' 'entry' 'to' table=[CREATE_TABLE] 'with' 'data' '(' data+=STRING+ ')'
 ;
 
-<<<<<<< HEAD
 // read only variable for JOIN,ORDER and TYPE 
 enum JOIN: join;
 enum ORDER: asc | desc;
-=======
-enum ORDER: ascending | descending;
->>>>>>> d0025eec8cff5643ca49ac970ed8c5bfc736e4e5
 enum TYPE: string | int | decimal | date;
 
 
