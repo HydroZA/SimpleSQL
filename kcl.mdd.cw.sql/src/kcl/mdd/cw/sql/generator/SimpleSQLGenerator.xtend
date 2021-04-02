@@ -90,6 +90,9 @@ class SimpleSQLGenerator extends AbstractGenerator
 		«IF (ct.ob !== null)»
 			ORDER BY «ct.ob.col» «ct.ob.type»
 		«ENDIF»
+		«IF (ct.gb !== null)»
+			GROUP BY «FOR col : ct.gb.cols SEPARATOR ','»«col.name»
+		«ENDIF»
 		'''
 	}
 	

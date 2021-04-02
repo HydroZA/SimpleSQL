@@ -24,4 +24,4 @@ create new table tblTest in Test with columns (
 
 add entry to tblTest with data ("Apples" "1.25")
 
-show all in tblTest where product is "Apples"
+show all in tblTest where product is "Apples" 

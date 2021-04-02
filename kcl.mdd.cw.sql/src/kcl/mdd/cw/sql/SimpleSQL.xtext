@@ -48,7 +48,7 @@ CREATE_TABLE:
 ;
 
 COLUMN_DEF:
-	name=ID 'with' 'type' type=TYPE
+	name=ID //'with' 'type' type=TYPE
 ;
 
 INSERT:
