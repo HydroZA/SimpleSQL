@@ -2762,3 +2762,8 @@ Caused by: java.io.FileNotFoundException: /home/james/ownCloud/University/Master
 	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
 	at org.eclipse.swt.graphics.ImageLoader.save(ImageLoader.java:604)
 	... 24 more
+
+!ENTRY org.eclipse.jdt.core 4 4 2021-04-02 14:19:29.013
+!MESSAGE Background Indexer Crash Recovery
+!STACK 0
+java.lang.OutOfMemoryError: Requested array size exceeds VM limit

@@ -20,7 +20,7 @@ ORDERBY:
 ;
 
 WHERE:
-	'where' column=[COLUMN_DEF] 'is' expected=STRING
+	'where' column=ID 'is' expected=STRING
 ;
 
 INNERJOIN:
