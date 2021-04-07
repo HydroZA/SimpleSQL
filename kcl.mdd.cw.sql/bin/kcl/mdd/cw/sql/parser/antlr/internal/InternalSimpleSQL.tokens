@@ -8,7 +8,6 @@
 'create'=29
 'data'=26
 'database'=31
-'date'=41
 'decimal'=40
 'delete'=27
 'descending'=37
@@ -66,4 +65,3 @@ T__37=37
 T__38=38
 T__39=39
 T__40=40
-T__41=41

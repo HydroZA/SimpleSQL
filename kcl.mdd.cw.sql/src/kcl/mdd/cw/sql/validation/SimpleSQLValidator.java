@@ -7,8 +7,10 @@ import org.eclipse.xtext.validation.Check;
 
 import kcl.mdd.cw.sql.simpleSQL.CREATE_TABLE;
 import kcl.mdd.cw.sql.simpleSQL.INSERT;
+import kcl.mdd.cw.sql.simpleSQL.Model;
 import kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage;
 import kcl.mdd.cw.sql.simpleSQL.Statement;
+import kcl.mdd.cw.sql.simpleSQL.TYPE;
 
 /**
  * This class contains custom validation rules. 
@@ -44,26 +46,55 @@ public class SimpleSQLValidator extends AbstractSimpleSQLValidator {
 	{
 		if (!Character.isUpperCase(cTbl.getName().charAt(0)))
 		{
-			warning("Table names should start with a capital", SimpleSQLPackage.Literals.CREATE_TABLE__NAME);
+			warning("Table names should start with a capital", 
+					SimpleSQLPackage.Literals.CREATE_TABLE__NAME);
 		}
 	}
 	
-	private boolean isStringLowercase(String s)
+	@Check
+	public void checkInsertDataLengthMatchesTable(CREATE_TABLE tbl, INSERT ins)
 	{
-        //convert String to char array
-        char[] charArray = s.toCharArray();
-        
-        for(int i=0; i < charArray.length; i++){
-            
-            //if the character is a letter
-            if( Character.isLetter(charArray[i]) ){
- 
-                //if any character is not in lower case, return false
-                if( !Character.isLowerCase( charArray[i] ))
-                    return false;
-            }
-        }
-        
-        return true;
+		if (tbl.getColumns().size() != ins.getData().size())
+		{
+			error("Amount of inserted elements does not match table", 
+					SimpleSQLPackage.Literals.INSERT__DATA);
+		}
 	}
+	
+	@Check
+	public void checkInsertTypesValid(CREATE_TABLE tbl, INSERT ins)
+	{
+		System.out.println("testing types valid");
+		for (int i = 0; i < tbl.getColumns().size(); i++)
+		{
+			String attemptedInsertData = ins.getData().get(i);
+			TYPE expectedType = tbl.getColumns().get(i).getType();
+			
+			switch (expectedType)
+			{
+				case INT:
+				{
+					if (!attemptedInsertData.matches("-?\\d+"))
+					{
+						error("Mismatched type in insert statement on: " + attemptedInsertData,
+								SimpleSQLPackage.Literals.INSERT__DATA);
+					}
+				}
+				case DECIMAL:
+				{
+					if (!attemptedInsertData.matches("\\d+(\\.\\d{1,2})?"))
+					{
+						error("Mismatched type in insert statement on: " + attemptedInsertData,
+								SimpleSQLPackage.Literals.INSERT__DATA);
+					}
+				}
+				case STRING:
+				{
+					// anything is accepted in string type
+				}
+			}
+			
+		}
+	}
+
 }
