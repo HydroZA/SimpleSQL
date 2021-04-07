@@ -38,13 +38,21 @@ public class SimpleSQLValidator extends AbstractSimpleSQLValidator {
         }
     }*/
 	
-
+	@Check
+	public void checkInsertTableNameStartsWithCapital(INSERT stmt)
+	{
+		if (!isStringLowercase(stmt.getTable().getName()))
+		{
+			warning("Table names should be lowercase", SimpleSQLPackage.Literals.INSERT__TABLE);
+		}
+	}
+	
 	@Check
 	public void checkCreateTableNameStartsWithCapital(CREATE_TABLE cTbl)
 	{
-		if (!Character.isUpperCase(cTbl.getName().charAt(0)))
+		if (!isStringLowercase(cTbl.getName()))
 		{
-			warning("Table names should start with a capital", SimpleSQLPackage.Literals.CREATE_TABLE__NAME);
+			warning("Table names should be lowercase", SimpleSQLPackage.Literals.CREATE_TABLE__NAME);
 		}
 	}
 	
