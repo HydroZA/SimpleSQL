@@ -29,7 +29,7 @@ WHERE:
 
 // SELECT RULE which inherits *where *groupby *orderby and *innerjoin statement 
 SELECT:
-	'show' (name=ID|'all') 'in' table=ID (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
+	'show' (name=ID|'all') 'in' table=[CREATE_TABLE] (where=WHERE)? (gb=GROUPBY)? (ob=ORDERBY)?
 ;
 
 // UPDATE RULE that will locate the column and data that will need to be modified in the table 
@@ -62,7 +62,7 @@ INSERT:
 ;
 
 enum ORDER: ascending | descending;
-enum TYPE: string | int | decimal | date;
+enum TYPE: string | int | decimal;
 
 
 

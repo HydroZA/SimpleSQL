@@ -394,19 +394,14 @@ ruleSELECT returns [EObject current=null]
 		}
 		(
 			(
-				lv_table_4_0=RULE_ID
-				{
-					newLeafNode(lv_table_4_0, grammarAccess.getSELECTAccess().getTableIDTerminalRuleCall_3_0());
-				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getSELECTRule());
 					}
-					setWithLastConsumed(
-						$current,
-						"table",
-						lv_table_4_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+				}
+				otherlv_4=RULE_ID
+				{
+					newLeafNode(otherlv_4, grammarAccess.getSELECTAccess().getTableCREATE_TABLECrossReference_3_0());
 				}
 			)
 		)
@@ -985,14 +980,6 @@ ruleTYPE returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getTYPEAccess().getDecimalEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_2, grammarAccess.getTYPEAccess().getDecimalEnumLiteralDeclaration_2());
-			}
-		)
-		    |
-		(
-			enumLiteral_3='date'
-			{
-				$current = grammarAccess.getTYPEAccess().getDateEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_3, grammarAccess.getTYPEAccess().getDateEnumLiteralDeclaration_3());
 			}
 		)
 	)
