@@ -42,7 +42,7 @@ public class SimpleSQLValidator extends AbstractSimpleSQLValidator {
 	{
 		if (!isStringLowercase(stmt.getTable().getName()))
 		{
-			warning("Table names should be lowercase", SimpleSQLPackage.Literals.INSERT__TABLE);
+			warning("Table names should be lowercase", SimpleSQLPackage.INSERT__TABLE);
 		}
 	}
 	

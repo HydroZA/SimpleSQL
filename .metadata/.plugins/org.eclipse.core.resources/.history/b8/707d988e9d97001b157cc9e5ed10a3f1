@@ -6,7 +6,6 @@ package kcl.mdd.cw.sql.validation;
 import org.eclipse.xtext.validation.Check;
 
 import kcl.mdd.cw.sql.simpleSQL.INSERT;
-import kcl.mdd.cw.sql.simpleSQL.SimpleSQLPackage;
 import kcl.mdd.cw.sql.simpleSQL.Statement;
 
 /**
@@ -38,12 +37,9 @@ public class SimpleSQLValidator extends AbstractSimpleSQLValidator {
     }*/
 	
 	@Check
-	public void checkTableNameLowercase(INSERT stmt)
+	public void checkAllLowercase(INSERT stmt)
 	{
-		if (!isStringLowercase(stmt.getTable().getName()))
-		{
-			warning("Table names should be lowercase", SimpleSQLPackage.Literals.INSERT__TABLE);
-		}
+		if (!isStringLowercase(stmt.getTable()) )
 	}
 	
 	private boolean isStringLowercase(String s)
