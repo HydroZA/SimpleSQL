@@ -44,7 +44,7 @@ DELETE:
 
 // CREATE_RULE to create new database 
 CREATE_DB:
-	'create' 'new' 'database' name=ID
+	'begin' 'database' name=ID
 ;
 
 // CREATE_TABLE RULE that will allow to implement columns within the database  
