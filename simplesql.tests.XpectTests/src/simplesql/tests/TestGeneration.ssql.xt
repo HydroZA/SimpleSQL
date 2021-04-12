@@ -1,0 +1,33 @@
+// XPECT_SETUP simplesql.tests.XpectTests END_SETUP
+/*
+   XPECT generated ---
+#!/bin/bash
+sqlite3 Test.db "
+	CREATE TABLE Testtbl (
+	product VARCHAR(255),
+	price DECIMAL
+	)
+	;
+	INSERT INTO Testtbl VALUES (
+	\"Apples\",
+	\"cake\"
+	)
+	;
+	SELECT *
+	FROM Testtbl
+	WHERE product=\"Apples\"
+	;
+	"
+
+   ---
+*/
+
+create new database Test
+
+create new table Testtbl in Test with columns (
+	product with type string
+	price with type decimal
+)
+
+add entry to Testtbl with data ("Apples" "cake")
+show all in Testtbl where product is "Apples"
