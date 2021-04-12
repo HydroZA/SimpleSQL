@@ -17,29 +17,8 @@ import kcl.mdd.cw.sql.simpleSQL.TYPE;
  *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
-public class SimpleSQLValidator extends AbstractSimpleSQLValidator {
-	
-//	public static final INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					SimpleSQLPackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
-/*    public class DomainmodelValidator extends AbstractDomainmodelValidator {
-        
-        @Check
-        public void checkNameStartsWithCapital(Entity entity) {
-            if (!Character.isUpperCase(entity.getName().charAt(0))) {
-                warning("Name should start with a capital", 
-                    DomainmodelPackage.Literals.TYPE__NAME);
-            }
-        }
-    }*/
-	
+public class SimpleSQLValidator extends AbstractSimpleSQLValidator 
+{
 
 	@Check
 	public void checkCreateTableNameStartsWithCapital(CREATE_TABLE cTbl)
@@ -93,8 +72,6 @@ public class SimpleSQLValidator extends AbstractSimpleSQLValidator {
 					// anything is accepted in string type
 				}
 			}
-			
 		}
 	}
-
 }

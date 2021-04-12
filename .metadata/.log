@@ -2790,3 +2790,18 @@ java.lang.OutOfMemoryError: Requested array size exceeds VM limit
 	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:711)
 	at org.eclipse.jdt.internal.core.search.processing.JobManager.run(JobManager.java:384)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+
+!ENTRY org.eclipse.jdt.core 4 4 2021-04-07 14:23:11.767
+!MESSAGE Background Indexer Crash Recovery
+!STACK 0
+java.lang.OutOfMemoryError: Requested array size exceeds VM limit
+!SESSION 2021-04-12 14:50:44.078 -----------------------------------------------
+eclipse.buildId=4.14.0.I20191210-0610
+java.version=15.0.2
+java.vendor=N/A
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_GB
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-04-12 14:50:47.531
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

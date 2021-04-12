@@ -1,0 +1,15 @@
+// XPECT_SETUP simplesql.tests.XpectTests END_SETUP
+   
+create new database Test
+
+/*
+   XPECT warnings --> "Table names should start with a capital"  at "testtbl"
+*/
+
+create new table testtbl in Test with columns (
+	product with type string
+	price with type decimal
+)
+
+add entry to testtbl with data ("Apples" "cake")
+show all in testtbl where product is "Apples"
